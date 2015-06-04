@@ -1,4 +1,5 @@
-define([],function(){
+
+
  var MonsterState = {SLEEPING:1, HUNTING:2, IDLING:3,WALKING:4};
    var Monster = {
        position:{x:0, y:0},
@@ -15,5 +16,6 @@ define([],function(){
     Monster.prototype.sniff = function(map){
 
     };
-    return Monster;
-});
+
+module.exports = MonsterState;
+module.exports = Monster;
