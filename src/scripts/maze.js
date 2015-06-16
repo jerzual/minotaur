@@ -1,4 +1,4 @@
-define(['monster'], function (Monster) {
+var Monster = require('monster');
 
     var Edge = {NORTH: 0, EAST: 1, SOUTH: 2, WEST: 3};
     var Direction = {HORIZONTAL: 0, VERTICAL: 1};
@@ -31,7 +31,7 @@ define(['monster'], function (Monster) {
          * Amount of gold found in chest.
          * @type {number}
          */
-        this.goldAmount = .3;
+        this.goldAmount = 0.3;
     };
 
     /**
@@ -48,7 +48,7 @@ define(['monster'], function (Monster) {
                 this.tilesMap[x][y].push(tile);
             }
         }
-        ;
+
         this.size = {width: width, height: height};
     };
 
@@ -101,5 +101,4 @@ define(['monster'], function (Monster) {
         scene.add();
     };
 
-    return Maze;
-});
+module.exports = Maze;

@@ -1,9 +1,11 @@
-define(['THREE','RNG'],function(THREE, RNG){
-   var Minotaur = function(){
+var THREE = require('three');
+var RNG = require('rng');
+var Player = require('./player');
+
+var Minotaur = function(){
        this.scene = new THREE.Scene();
        this.rng = new RNG();
        this.player = new Player();
    };
 
-    return new Minotaur();
-});
+module.exports = Minotaur;
