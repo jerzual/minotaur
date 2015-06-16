@@ -8,32 +8,51 @@ var buffer = require('vinyl-buffer');
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 var gutil = require('gulp-util');
+var connect = require('gulp-connect');
 var rename = require('gulp-rename');
+var jshint = require('gulp-jshint');
 var less = require('gulp-less');
 var jade = require('gulp-jade');
+var paths = {source: './src', destination: './www'};
 
-gulp.task('javascript', function () {
-  // set up the browserify instance on a task basis
-  var b = browserify({
-    entries: './src/scripts/main.js',
-    debug: true,
-    // defining transforms here will avoid crashing your stream
-    transform: [browserifyShim]
-  });
+gulp.task('browserify', function () {
+    // set up the browserify instance on a task basis
+    var b = browserify({
+        entries: './src/scripts/main.js',
+        debug: true,
+        // defining transforms here will avoid crashing your stream
+        transform: [browserifyShim]
+    });
 
-  return b.bundle()
-    .pipe(source('app.js'))
-    .pipe(buffer())
-    .pipe(sourcemaps.init({loadMaps: true}))
+    return b.bundle()
+        .pipe(source('main.js'))
+        .pipe(buffer())
+        .pipe(sourcemaps.init({loadMaps: true}))
         // Add transformation tasks to the pipeline here.
         .pipe(uglify())
         .on('error', gutil.log)
-    .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest('./dist/js/'));
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest(paths.destination+'/js/'));
+});
+
+gulp.task('lint', function () {
+    return gulp.src('./src/**/*.js')
+        .pipe(jshint())
+        .pipe(jshint.reporter('default', {verbose: true}));
+});
+
+gulp.task('less', function () {
+    return gulp.src('./src/less/**/*.less')
+        .pipe(less())
+        .pipe(gulp.dest(paths.destination+'/css/'));
 });
 
 gulp.task('html', function () {
-    // place code for your default task here
+    gulp.src('./src/*.jade')
+        .pipe(jade({
+            pretty: true
+        }))
+        .pipe(gulp.dest(paths.destination+'/'))
 });
 
 
@@ -45,9 +64,9 @@ gulp.task('connect', function () {
 });
 
 gulp.task('watch', function () {
-    gulp.watch([paths.src + '/**/*.html'], ['html']);
-    gulp.watch([paths.out + '/**/*.js'], ['uglify']);
-    gulp.watch([paths.out + '/**/*.less'], ['less']);
+    gulp.watch([paths.source+'/**/*.jade'], ['html']);
+    gulp.watch([paths.source+'/**/*.js'], ['lint', 'browserify']);
+    gulp.watch([paths.source+'/**/*.less'], ['less']);
 });
 
 gulp.task('default', ['connect', 'watch']);

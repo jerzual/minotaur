@@ -17,5 +17,5 @@
 
     };
 
-module.exports = MonsterState;
+
 module.exports = Monster;
