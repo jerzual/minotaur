@@ -26,8 +26,7 @@
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   },
-  "browserify-shim": {
-  },
+  "browserify-shim": {},
   "browserify": {
     "transform": [
       "browserify-shim"
@@ -35,7 +34,10 @@
   },
   "dependencies": {
     "dat-gui": "^0.5.0",
+    "exoskeleton": "^0.7.0",
+    "lodash": "^3.10.1",
     "rng": "^0.2.2",
-    "three": "^0.71.0"
+    "three": "^0.71.0",
+    "zepto": "0.0.4"
   }
 }
