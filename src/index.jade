@@ -1,15 +1,8 @@
 doctype html
 html
     head
-        meta(charset='utf-8')
-        title three.js - pointerlock controls
-        link(rel='stylesheet',href='styles/index.css')
+        title | Minotaur
+        link(rel='stylesheet',src='styles/index.css')
     body
-        //script(src='../build/three.min.js')
-        //script(src='js/controls/PointerLockControls.js')
-        #blocker
-            #instructions
-                span(style='font-size:40px') Click to play
-                br
-                | (W, A, S, D = Move, SPACE = Jump, MOUSE = Look around)
-        script(src='scripts/vendor/require.js',data-main='scripts/main.js')
+        canvas#minotaur
+        script(src='js/main.js')
