@@ -1,8 +1,11 @@
-var Player = function(){
+
+function Player(options){
+    this.x = options.x ? options.x : 0;
+    this.y = options.y ? options.y : 0;
+}
+
+Player.prototype.move = function(options){
 
 };
-Player.prototype.move = function(){
 
-};
-
-module.export = Player;
+module.exports = Player;

@@ -1,11 +1,13 @@
 var THREE = require('three');
-var RNG = require('rng');
+var RNG = require('rng-js');
 var Player = require('./player');
 
-var Minotaur = function(){
-       this.scene = new THREE.Scene();
-       this.rng = new RNG();
-       this.player = new Player();
-   };
+
+function Minotaur(canvas){
+   this.scene = new THREE.Scene();
+   this.rng = new RNG(''+Date.now());
+   //this.player = new Player();
+   this.canvas = canvas;
+}
 
 module.exports = Minotaur;

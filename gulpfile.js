@@ -28,9 +28,9 @@ gulp.task('browserify', function () {
         .pipe(source('main.js'))
         .pipe(buffer())
         .pipe(sourcemaps.init({loadMaps: true}))
-        // Add transformation tasks to the pipeline here.
-        .pipe(uglify())
-        .on('error', gutil.log)
+            // Add transformation tasks to the pipeline here.
+            //.pipe(uglify())
+            .on('error', gutil.log)
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(paths.destination+'/js/'));
 });
