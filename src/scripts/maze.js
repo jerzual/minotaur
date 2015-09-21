@@ -1,7 +1,15 @@
 var Monster = require('monster');
 
-    var Edge = {NORTH: 0, EAST: 1, SOUTH: 2, WEST: 3};
-    var Direction = {HORIZONTAL: 0, VERTICAL: 1};
+    var Edge = {
+        NORTH: 0,
+        EAST: 1,
+        SOUTH: 2,
+        WEST: 3
+    };
+    var Direction = {
+        HORIZONTAL: 0,
+        VERTICAL: 1
+    };
 
     var Maze = function Maze() {
         /**

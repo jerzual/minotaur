@@ -5,4 +5,22 @@ html
         link(rel='stylesheet',src='styles/index.css')
     body
         canvas#minotaur
+        div#gui
+            #map
+                - var n = 0
+                while n < 8
+                    - var id = '#tile-' + n++
+                    #{id}.tile .tile-empty
+            #controls
+                .nipple-circle
+            #actions
+                button(id='A')
+                button(id='B')
+            #inventory
+                #equipedItems
+                    #head
+                    #body
+                    #left
+                    #right
+                #bag
         script(src='js/main.js')
