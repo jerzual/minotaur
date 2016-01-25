@@ -1,4 +1,4 @@
-import Options from '../src/scripts/options.js';
+import Options from '../../src/scripts/models/Options';
 
 describe('Options', function () {
 
