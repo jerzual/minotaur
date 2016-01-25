@@ -1,6 +1,6 @@
 var THREE = require('three');
 var RNG = require('rng-js');
-var Player = require('./player');
+var Player = require('./model/Player');
 
 
 function Minotaur(canvas){
