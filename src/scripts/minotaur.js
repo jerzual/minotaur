@@ -1,9 +1,13 @@
-define(['THREE','RNG'],function(THREE, RNG){
-   var Minotaur = function(){
-       this.scene = new THREE.Scene();
-       this.rng = new RNG();
-       this.player = new Player();
-   };
+var THREE = require('three');
+var RNG = require('rng-js');
+var Player = require('./player');
 
-    return new Minotaur();
-});
+
+function Minotaur(canvas){
+   this.scene = new THREE.Scene();
+   this.rng = new RNG(''+Date.now());
+   //this.player = new Player();
+   this.canvas = canvas;
+}
+
+module.exports = Minotaur;

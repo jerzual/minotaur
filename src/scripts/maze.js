@@ -1,21 +1,15 @@
-define(['monster'], function (Monster) {
+var Monster = require('monster');
 
-    var Room = function () {
-        this.start = {x: 0, y: 0};
-        this.end = {x: 0, y: 0};
-        this.doors = {top: false, left: false, bottom: false, right: false}
+    var Edge = {
+        NORTH: 0,
+        EAST: 1,
+        SOUTH: 2,
+        WEST: 3
     };
-
-    Room.prototype.isThisTileIn = function (x, y) {
-        //TODO return true if given coordinates are in the room.
+    var Direction = {
+        HORIZONTAL: 0,
+        VERTICAL: 1
     };
-
-    Room.prototype.hasChest = function (x, y) {
-
-    };
-
-    var Edge = {NORTH: 0, EAST: 1, SOUTH: 2, WEST: 3};
-    var Direction = {HORIZONTAL: 0, VERTICAL: 1};
 
     var Maze = function Maze() {
         /**
@@ -45,7 +39,7 @@ define(['monster'], function (Monster) {
          * Amount of gold found in chest.
          * @type {number}
          */
-        this.goldAmount = .3;
+        this.goldAmount = 0.3;
     };
 
     /**
@@ -62,7 +56,7 @@ define(['monster'], function (Monster) {
                 this.tilesMap[x][y].push(tile);
             }
         }
-        ;
+
         this.size = {width: width, height: height};
     };
 
@@ -115,5 +109,4 @@ define(['monster'], function (Monster) {
         scene.add();
     };
 
-    return Maze;
-});
+module.exports = Maze;

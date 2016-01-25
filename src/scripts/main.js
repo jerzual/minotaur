@@ -1,16 +1,8 @@
-require.config({
-    baseUrl:'/scripts',
-    paths:{
-        three:'vendor/THREE',
-        datGUI:'vendor/dat.gui'
-    },
-    shim:{
-        three:{exports:'THREE'},
-        datGUI:{exports:'dat'},
-        rng:{exports:'RNG'}
-    }
-});
+var THREE = require('three');
+var datGUI = require('dat-gui');
+var Minotaur = require('./minotaur');
 
-define(['minotaur'],function(Minotaur){
-    window.minotaur = new Minotaur();
-});
+var canvas = document.getElementById('minotaur');
+
+
+window.minotaur = new Minotaur(canvas);
