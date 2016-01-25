@@ -1,8 +1,8 @@
 'use strict';
 
+var gulp = require('gulp');
 var browserify = require('browserify');
 var browserifyShim = require('browserify-shim');
-var gulp = require('gulp');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var uglify = require('gulp-uglify');
@@ -13,6 +13,7 @@ var rename = require('gulp-rename');
 var jshint = require('gulp-jshint');
 var less = require('gulp-less');
 var jade = require('gulp-jade');
+var del = require('del');
 var paths = {source: './src', destination: './www'};
 
 gulp.task('browserify', function () {
@@ -36,60 +37,34 @@ gulp.task('browserify', function () {
 });
 
 gulp.task('lint', function () {
-    return gulp.src('./src/**/*.js')
+    return gulp.src(paths.source+'/**/*.js')
         .pipe(jshint())
         .pipe(jshint.reporter('default', {verbose: true}));
 });
 
-gulp.task('less', function () {
-    return gulp.src('./src/styles/**/*.less')
-        .pipe(less())
-        .pipe(gulp.dest(paths.destination+'/styles/'));
-});
-gulp.task('requirejs',['bower-requirejs'], function () {
-    rjs({
-        baseUrl: 'src/scripts/',
-        name:'main',
-        out: 'tribes.min.js',
-        shim: {
-            THREE:{exports:"THREE"}
-            ,RNG:{exports:"RNG"}
-
-        },
-        paths: {
-            "Backbone": "vendor/exoskeleton",
-            "_": "vendor/lodash",
-            "RNG": "vendor/rng",
-            "THREE": "vendor/three",
-            "Zepto": "vendor/zepto"
-        }
-        // ... more require.js options
-    })
-        .pipe(gulp.dest(paths.out + '/js/')); // pipe it to the output DIR
-});
-gulp.task('less', function () {
-    return gulp.src(paths.src + '/styles/*.scss')
+gulp.task('sass', function () {
+    return gulp.src(paths.source + '/styles/*.scss')
         .pipe(sourcemaps.init())
         .pipe(sass())
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest(paths.out + '/styles/'))
+        .pipe(gulp.dest(paths.destination + '/styles/'))
         .pipe(connect.reload());
 });
 gulp.task('uglify', function () {
     //copy sources to www/
-    gulp.src(paths.src + '/scripts/**/*.js')
-        .pipe(gulp.dest(paths.out + '/scripts'));
+    gulp.src(paths.source + '/scripts/**/*.js')
+        .pipe(gulp.dest(paths.destination + '/scripts'));
     //uglify them
-    return gulp.src(paths.out + '/scripts/**/*.js')
+    return gulp.src(paths.destination + '/scripts/**/*.js')
         .pipe(sourcemaps.init())
         .pipe(uglify())
         .pipe(rename({'extname': '.min.js'}))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest(paths.out +'/scripts'))
+        .pipe(gulp.dest(paths.destination +'/scripts'))
         .pipe(connect.reload());
 });
 gulp.task('html', function () {
-    gulp.src('./src/*.jade')
+    gulp.src(paths.source+'/*.jade')
         .pipe(jade({
             pretty: true
         }))
@@ -105,9 +80,9 @@ gulp.task('connect', function () {
 });
 
 gulp.task('watch', function () {
-    gulp.watch([paths.source+'/**/*.jade'], ['html']);
-    gulp.watch([paths.source+'/**/*.js'], ['lint', 'browserify']);
-    gulp.watch([paths.source+'/**/*.less'], ['less']);
+    gulp.watch([paths.source + '/**/*.jade'], ['html']);
+    gulp.watch([paths.source + '/**/*.js'], ['lint','browserify']);
+    gulp.watch([paths.source + '/**/*.scss'], ['sass']);
 });
 gulp.task('build', ['bower-requirejs','requirejs','html','uglify', 'sass']);
 
