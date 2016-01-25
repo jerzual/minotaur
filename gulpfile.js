@@ -1,11 +1,8 @@
 'use strict';
 
-var gulp = require('gulp'),
-    sourcemaps = require('gulp-sourcemaps'),
-    sass = require('gulp-sass'),
-    browserify = require('browserify');
-var browserifyShim = require('browserify-shim');
 var gulp = require('gulp');
+var browserify = require('browserify');
+var browserifyShim = require('browserify-shim');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var uglify = require('gulp-uglify');
@@ -16,9 +13,9 @@ var rename = require('gulp-rename');
 var jshint = require('gulp-jshint');
 var sass = require('gulp-sass');
 var jade = require('gulp-jade');
+var del = require('del');
 var paths = {source: './src', destination: './www'};
 
-var paths = {src: './src', out: './www/'}
 
 gulp.task('browserify', function () {
     // set up the browserify instance on a task basis
@@ -41,36 +38,36 @@ gulp.task('browserify', function () {
 });
 
 gulp.task('lint', function () {
-    return gulp.src('./src/**/*.js')
+    return gulp.src(paths.source+'/**/*.js')
         .pipe(jshint())
         .pipe(jshint.reporter('default', {verbose: true}));
 });
 
 gulp.task('sass', function () {
-    return gulp.src(paths.src + '/styles/*.scss')
+    return gulp.src(paths.source + '/styles/*.scss')
         .pipe(sourcemaps.init())
         .pipe(sass())
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest(paths.out + '/styles/'))
+        .pipe(gulp.dest(paths.destination + '/styles/'))
         .pipe(connect.reload());
 });
 
 gulp.task('uglify', function () {
     //copy sources to www/
-    gulp.src(paths.src + '/scripts/**/*.js')
-        .pipe(gulp.dest(paths.out + '/scripts'));
+    gulp.src(paths.source + '/scripts/**/*.js')
+        .pipe(gulp.dest(paths.destination + '/scripts'));
     //uglify them
-    return gulp.src(paths.out + '/scripts/**/*.js')
+    return gulp.src(paths.destination + '/scripts/**/*.js')
         .pipe(sourcemaps.init())
         .pipe(uglify())
         .pipe(rename({'extname': '.min.js'}))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest(paths.out +'/scripts'))
+        .pipe(gulp.dest(paths.destination +'/scripts'))
         .pipe(connect.reload());
 });
 
 gulp.task('html', function () {
-    gulp.src('./src/*.jade')
+    gulp.src(paths.source+'/*.jade')
         .pipe(jade({
             pretty: true
         }))
@@ -86,9 +83,9 @@ gulp.task('connect', function () {
 });
 
 gulp.task('watch', function () {
-    gulp.watch([paths.src + '/**/*.jade'], ['html']);
-    gulp.watch([paths.src + '/**/*.js'], ['lint','browserify']);
-    gulp.watch([paths.src + '/**/*.scss'], ['sass']);
+    gulp.watch([paths.source + '/**/*.jade'], ['html']);
+    gulp.watch([paths.source + '/**/*.js'], ['lint','browserify']);
+    gulp.watch([paths.source + '/**/*.scss'], ['sass']);
 });
 
 gulp.task('build', ['html', 'sass','lint', 'browserify']);
