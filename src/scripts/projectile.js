@@ -1,10 +1,15 @@
-var Projectile = function Projectile(){
-    var damage = 2,
-        velocity = 0.5;
-};
+class Projectile{
+    constructor(){
+        this.damage = 2;
+        this.velocity = 0.5;
+    }
+    move(){
 
-Projectile.prototype.initialize = function(){
-    //todo set initial Velocity
-};
+    }
+    collide(entity){
 
-module.export.Projectile = Projectile;
+    }
+}
+
+
+export default Projectile;

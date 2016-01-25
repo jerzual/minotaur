@@ -1,11 +1,13 @@
+class Player extends Entity{
+    constructor(options){
+        super(options);
+        this.x = options.x ? options.x : 0;
+        this.y = options.y ? options.y : 0;
+    }
 
-function Player(options){
-    this.x = options.x ? options.x : 0;
-    this.y = options.y ? options.y : 0;
+    move(options) {
+
+    }
 }
 
-Player.prototype.move = function(options){
-
-};
-
-module.exports = Player;
+export default Player;

@@ -11,12 +11,12 @@ var Monster = require('monster');
         VERTICAL: 1
     };
 
-    var Maze = function Maze() {
+    var Maze = function Maze(sizea) {
         /**
          * Default size.
          * @type {{width: number, height: number}}
          */
-        this.size = {
+        this.size = size ? size : {
             width: 64,
             height: 48
         };
