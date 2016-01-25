@@ -3,6 +3,7 @@
 var gulp = require('gulp');
 var browserify = require('browserify');
 var browserifyShim = require('browserify-shim');
+var babelify = require('babelify');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var uglify = require('gulp-uglify');
@@ -22,7 +23,7 @@ gulp.task('browserify', function () {
         entries: './src/scripts/main.js',
         debug: true,
         // defining transforms here will avoid crashing your stream
-        transform: [browserifyShim]
+        transform: [browserifyShim,babelify]
     });
 
     return b.bundle()

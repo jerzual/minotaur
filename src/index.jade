@@ -9,8 +9,8 @@ html
             #map
                 - var n = 0
                 while n < 8
-                    - var id = '#tile-' + n++
-                    #{id}.tile .tile-empty
+                    - var tileId = 'tile-' + n++
+                    div(id=tileId).tile .tile-empty
             #controls
                 .nipple-circle
             #actions
@@ -23,4 +23,7 @@ html
                     #left
                     #right
                 #bag
+
+        section#game
+        section#menu
         script(src='js/main.js')

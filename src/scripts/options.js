@@ -1,4 +1,6 @@
+class Options{
+    constructor(key,value){
 
-var Options = function(){
+    }
 
-};
+}
