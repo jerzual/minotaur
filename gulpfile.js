@@ -23,7 +23,7 @@ gulp.task('browserify', function () {
         entries: './src/scripts/main.js',
         debug: true,
         // defining transforms here will avoid crashing your stream
-        transform: [browserifyShim,babelify]
+        transform: [browserifyShim, [babelify,{"presets":["es2015"]}]]
     });
 
     return b.bundle()

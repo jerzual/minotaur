@@ -3,7 +3,7 @@
  */
 class Entity{
 
-    constructor(x,y,v,a){
+    constructor(...args){
 
     }
 

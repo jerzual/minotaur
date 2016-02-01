@@ -3,21 +3,21 @@
  *
  *
  */
-import Seed from '../src/scripts/seed.js';
+import Seed from '../../src/scripts/model/Seed.js';
 
-describe('ES6 Foo', function () {
+describe('Seed Object', function () {
 
-    let foo;
+    let seed;
 
     beforeEach(()=>{
-        foo = new Foo();
+        seed = new Seed();
     });
 
     it('should return Do Something when calling doSomething', ()=>{
-        expect(foo.doSomething()).toEqual('Do Something');
+        expect(seed.doSomething()).toEqual('Do Something');
     });
 });
 
-describe('Seed',()=>{
+describe('Seed generate function',()=>{
 
 });

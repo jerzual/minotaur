@@ -2,32 +2,48 @@
   "name": "minotaur",
   "version": "1.0.0",
   "description": "an attempt at making a browser FPS with THREE.js",
-  "main": "src/minotaur.js",
+  "main": "src/scripts/minotaur.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "jibhaine",
+  "license": "MIT",
   "repository": "https://github.com/jerzual/minotaur.git",
   "devDependencies": {
     "babelify": "^7.2.0",
-    "browserify": "^10.2.3",
+    "browserify": "^13.0.0",
     "browserify-shim": "^3.8.7",
+    "chai": "^3.5.0",
     "del": "^2.2.0",
-    "gulp": "^3.8.11",
+    "glslify": "^5.0.2",
+    "gulp": "^3.9.0",
     "gulp-connect": "^2.3.1",
     "gulp-data": "^1.2.0",
     "gulp-jade": "^1.0.0",
-    "gulp-jshint": "^1.11.0",
+    "gulp-jshint": "^2.0.0",
     "gulp-rename": "^1.2.2",
-    "gulp-size": "^1.2.1",
+    "gulp-sass": "^2.1.1",
+    "gulp-size": "^2.0.0",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.2.0",
     "gulp-util": "^3.0.4",
     "jade": "^1.9.2",
+    "karma": "^0.13.19",
+    "karma-browserify": "^5.0.1",
+    "karma-chai": "^0.1.0",
+    "karma-mocha": "^0.2.1",
+    "karma-mocha-reporter": "^1.1.5",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "mocha": "^2.4.5",
+    "phantomjs-prebuilt": "^2.1.3",
     "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.7.0"
   },
-  "browserify-shim": {},
+  "browserify-shim": {
+    "three": "global:THREE",
+    "exoskeleton": "backbone"
+  },
   "browserify": {
     "transform": [
       "browserify-shim",
@@ -38,10 +54,10 @@
     "babel-core": "^6.4.5",
     "babel-preset-es2015": "^6.3.13",
     "dat-gui": "^0.5.0",
-    "exoskeleton": "^0.7.0",
-    "lodash": "^3.10.1",
+    "lodash": "^4.1.0",
     "rng-js": "^1.0.1",
-    "three": "^0.71.0",
-    "zepto": "0.0.4"
+    "three": "^0.73.2",
+    "vue": "^1.0.16",
+    "vue-router": "^0.7.10"
   }
 }
