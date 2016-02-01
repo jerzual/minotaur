@@ -1,6 +1,6 @@
-import Backbone from 'backbone';
+import Vue from 'vue';
 
-export default class GameView extends Backbone.View{
+export default class GameView extends Vue{
     render(){
 
     }

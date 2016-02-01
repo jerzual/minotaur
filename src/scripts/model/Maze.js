@@ -1,4 +1,4 @@
-var Monster = require('monster');
+var Monster = require('./Monster');
 
     var Edge = {
         NORTH: 0,

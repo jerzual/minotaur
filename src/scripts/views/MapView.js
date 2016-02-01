@@ -1,7 +1,19 @@
+import Vue from 'vue';
 
-import {View,Model} from 'backbone';
+export default class MapView extends Vue{
+    data(){
+        return {
+            tiles:[],
+            width:32,
+            height:32,
+            offset:{
+                x:0,
+                y:0
+            }
+        }
+    }
+    template(){
 
-export default class MapView extends View{
-
+    }
 }
 

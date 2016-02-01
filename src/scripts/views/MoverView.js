@@ -1,3 +1,5 @@
+import Vue from 'vue';
+
 /**
  * The mover view is responsible for receiveing move events, and blocking them when they can't be done
  *

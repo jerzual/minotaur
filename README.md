@@ -1,5 +1,7 @@
 # Minotaur
 
+![Minotaur logo](https://github.com/jerzual/minotaur/raw/master/src/images/minotaur.gif "Logo Title Text 1")
+
 An attempt at making an old school dungeon crawler/FPS. And also, use gulp, browserify, three.js, cordova.
 
 ## Features

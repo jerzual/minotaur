@@ -7,6 +7,7 @@ module.exports = function(config)
         frameworks: ['browserify', 'mocha','chai'],
 
         files: [
+            'src/**/*.js',
             'test/**/*.js'
         ],
 
@@ -14,7 +15,8 @@ module.exports = function(config)
         ],
 
         preprocessors: {
-            'src/tests/*.js': ['babelify','browserify']
+            'src/**/*.js': ['browserify'],
+            'tests/**/*.js': ['browserify']
         },
 
         reporters: ['progress'],
@@ -31,12 +33,16 @@ module.exports = function(config)
 
         browserify: {
             debug: true,
-            transform: ['babelify']
+            transform: ['browserify-shim', 'babelify']
         },
 
         plugins: [
             'karma-phantomjs-launcher',
-            'karma-mocha','karma-browserify'],
+            'karma-browserify',
+            'karma-mocha',
+            'karma-chai',
+            'karma-mocha-reporter'
+        ],
 
         singleRun: true
     });

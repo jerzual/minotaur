@@ -1,9 +1,9 @@
 /**
  * Hub is in charge of display life and active weapon/inventory items.
  */
-import {View,Model} from 'backbone';
+import Vue from 'vue';
 
-export default class HubView extends View{
+export default class HubView extends Vue{
     render(){
 
     }
