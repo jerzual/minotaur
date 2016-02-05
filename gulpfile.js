@@ -15,15 +15,18 @@ var jshint = require('gulp-jshint');
 var less = require('gulp-less');
 var jade = require('gulp-jade');
 var del = require('del');
+
 var paths = {source: './src', destination: './www'};
+
+var production = (process.env.NODE_ENV === 'production');
 
 gulp.task('browserify', function () {
     // set up the browserify instance on a task basis
     var b = browserify({
         entries: './src/scripts/main.js',
-        debug: true,
+        debug: !production,
         // defining transforms here will avoid crashing your stream
-        transform: [browserifyShim, [babelify,{"presets":["es2015"]}]]
+        transform: [browserifyShim, babelify({presets: ["es2015"]})]
     });
 
     return b.bundle()
@@ -37,6 +40,49 @@ gulp.task('browserify', function () {
         .pipe(gulp.dest(paths.destination+'/js/'));
 });
 
+gulp.task('build:app', function () {
+    // set up the browserify instance on a task basis
+    var b = browserify({
+        entries: './src/scripts/main.js',
+        debug: !production,
+        // defining transforms here will avoid crashing your stream
+        transform: [browserifyShim, babelify({presets: ["es2015"]})]
+    });
+/*
+    //for each dependencies manage by npm.
+    packageJSON.dependencies.forEach((lib)=>{
+        //treat them as external by browserify.
+        b.external(lib);
+    });*/
+    return b.bundle()
+        .pipe(source('main.js'))
+        .pipe(buffer())
+        .pipe(sourcemaps.init({loadMaps: true}))
+        // Add transformation tasks to the pipeline here.
+        //.pipe(uglify())
+        .on('error', gutil.log)
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest(paths.destination+'/js/'));
+});
+gulp.task('build:vendor', function () {
+    // set up the browserify instance on a task basis
+    var b = browserify({
+        entries: './src/scripts/vendor.js',
+        debug: !production,
+        // defining transforms here will avoid crashing your stream
+        transform: [browserifyShim, babelify({presets: ["es2015"]})]
+    });
+
+    return b.bundle()
+        .pipe(source('vendor.js'))
+        .pipe(buffer())
+        .pipe(sourcemaps.init({loadMaps: true}))
+        // Add transformation tasks to the pipeline here.
+        //.pipe(uglify())
+        .on('error', gutil.log)
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest(paths.destination+'/js/'));
+});
 gulp.task('lint', function () {
     return gulp.src(paths.source+'/**/*.js')
         .pipe(jshint())
@@ -82,11 +128,11 @@ gulp.task('connect', function () {
 
 gulp.task('watch', function () {
     gulp.watch([paths.source + '/**/*.jade'], ['html']);
-    gulp.watch([paths.source + '/**/*.js'], ['lint','browserify']);
+    gulp.watch([paths.source + '/**/*.js'], ['browserify']);
     gulp.watch([paths.source + '/**/*.scss'], ['sass']);
 });
 gulp.task('build', ['bower-requirejs','requirejs','html','uglify', 'sass']);
 
-gulp.task('build', ['html', 'less','lint', 'browserify']);
+gulp.task('build', ['html', 'sass', 'browserify']);
 
 gulp.task('default', ['connect', 'watch']);
