@@ -1,13 +1,15 @@
-var THREE = require('three');
-var RNG = require('rng-js');
-var Player = require('./model/Player');
+import THREE from 'three';
+import RNG from 'rng-js';
+import Player from './model/Player';
 
 
-function Minotaur(canvas){
-   this.scene = new THREE.Scene();
-   this.rng = new RNG(''+Date.now());
-   //this.player = new Player();
-   this.canvas = canvas;
-}
+export default class Minotaur{
+   constructor(canvas){
+      this.scene = new THREE.Scene();
+      this.rng = new RNG(''+Date.now());
+      //this.player = new Player();
+      this.canvas = canvas;
+   }
+};
 
-module.exports = Minotaur;
+new Minotaur(document.getElementById('canvas'))
