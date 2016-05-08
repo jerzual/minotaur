@@ -1,4 +1,5 @@
-var MonsterState = {SLEEPING: 1, HUNTING: 2, IDLING: 3, WALKING: 4};
+const MonsterState = {SLEEPING: 1, HUNTING: 2, IDLING: 3, WALKING: 4};
+
 class Monster{
     defaults(){
         return {

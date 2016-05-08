@@ -1,5 +1,18 @@
 class Item{
-    constructor(weight,inventorySize){
+
+    constructor(props){
+        this.name = "default";
+        this.weight = 1;
+
+    }
+   /* abstract */
+    drop(){
+
+}
+    pickup(){
+
+}
+    use(){
 
     }
 }
