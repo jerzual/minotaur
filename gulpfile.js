@@ -15,6 +15,7 @@ var jshint = require('gulp-jshint');
 var less = require('gulp-less');
 var jade = require('gulp-jade');
 var del = require('del');
+const vueify = require('vueify');
 
 var paths = {source: './src', destination: './www'};
 
@@ -26,7 +27,7 @@ gulp.task('browserify', function () {
         entries: './src/scripts/main.js',
         debug: !production,
         // defining transforms here will avoid crashing your stream
-        transform: [browserifyShim, babelify({presets: ["es2015"]})]
+        transform: [browserifyShim, vueify, babelify({presets: ["es2015"]})]
     });
 
     return b.bundle()
@@ -135,4 +136,4 @@ gulp.task('build', ['bower-requirejs','requirejs','html','uglify', 'sass']);
 
 gulp.task('build', ['html', 'sass', 'browserify']);
 
-gulp.task('default', ['connect', 'watch']);
+gulp.task('default', ['build','connect', 'watch']);
