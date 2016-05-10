@@ -7,6 +7,7 @@ module.exports = function(config)
         frameworks: ['browserify', 'mocha','chai'],
 
         files: [
+            'src/scripts/minotaur.js',
             'src/**/*.js',
             'test/**/*.js'
         ],
@@ -33,7 +34,9 @@ module.exports = function(config)
 
         browserify: {
             debug: true,
-            transform: ['browserify-shim', 'babelify']
+            entry: './src/scripts/minotaur.js',
+            transform: ['browserify-shim', 'babelify','vueify'],
+            extensions: ['.js','.vue']
         },
 
         plugins: [

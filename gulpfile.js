@@ -11,7 +11,6 @@ var sourcemaps = require('gulp-sourcemaps');
 var gutil = require('gulp-util');
 var connect = require('gulp-connect');
 var rename = require('gulp-rename');
-var jshint = require('gulp-jshint');
 var sass = require('gulp-sass');
 var jade = require('gulp-jade');
 var del = require('del');
@@ -83,11 +82,6 @@ gulp.task('build:vendor', function () {
         .on('error', gutil.log)
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(paths.destination+'/js/'));
-});
-gulp.task('lint', function () {
-    return gulp.src(paths.source+'/**/*.js')
-        .pipe(jshint())
-        .pipe(jshint.reporter('default', {verbose: true}));
 });
 
 gulp.task('sass', function () {
