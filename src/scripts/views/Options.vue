@@ -1,3 +1,8 @@
+<style>
+</style>
+<template>
+</template>
+<script>
 import Vue from 'vue';
 
 export default class GameView extends Vue{
@@ -5,3 +10,4 @@ export default class GameView extends Vue{
 
     }
 }
+</script>
