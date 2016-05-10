@@ -1,4 +1,5 @@
-class Projectile{
+
+export default class Projectile{
     constructor(){
         this.damage = 2;
         this.velocity = 0.5;
@@ -12,6 +13,3 @@ class Projectile{
 
     }
 }
-
-
-export default Projectile;

@@ -1,10 +1,13 @@
 /**
  * a superclass of all drawable things.
  */
-class Entity{
 
-    constructor(...args){
+export default class Entity{
 
+    constructor(args){
+        this.inventory = [];
+        this.sprites = [];
+        this.bodies = [];
     }
 
 }

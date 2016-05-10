@@ -1,4 +1,5 @@
-class Item{
+
+export default class Item{
 
     constructor(props){
         this.name = "default";
@@ -8,10 +9,10 @@ class Item{
    /* abstract */
     drop(){
 
-}
+    }
     pickup(){
 
-}
+    }
     use(){
 
     }

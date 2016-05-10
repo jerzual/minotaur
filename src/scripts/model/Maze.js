@@ -1,12 +1,12 @@
-var Monster = require('./Monster');
+import Monster from './Monster';
 
-    var Edge = {
+    const Edge = {
         NORTH: 0,
         EAST: 1,
         SOUTH: 2,
         WEST: 3
     };
-    var Direction = {
+    const Direction = {
         HORIZONTAL: 0,
         VERTICAL: 1
     };
@@ -109,4 +109,4 @@ var Monster = require('./Monster');
         scene.add();
     };
 
-module.exports = Maze;
+export default Maze;
