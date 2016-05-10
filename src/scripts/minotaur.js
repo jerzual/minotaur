@@ -12,4 +12,6 @@ export default class Minotaur{
    }
 };
 
-new Minotaur(document.getElementById('canvas'))
+document.addEventListener('DOMContentLoaded',function(){
+   new Minotaur(document.getElementById('canvas'));
+});
