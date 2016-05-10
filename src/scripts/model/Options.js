@@ -1,4 +1,5 @@
-class Options{
+
+export default class Options{
     constructor(key,value){
 
     }

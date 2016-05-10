@@ -1,6 +1,7 @@
 const MonsterState = {SLEEPING: 1, HUNTING: 2, IDLING: 3, WALKING: 4};
 
-class Monster{
+
+export default class Monster{
     defaults(){
         return {
             position: {

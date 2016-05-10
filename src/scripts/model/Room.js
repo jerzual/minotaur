@@ -1,5 +1,6 @@
 
-class Room {
+
+export default class Room {
     constructor(opts) {
         this.start = {x: 0, y: 0};
         this.end = {x: 0, y: 0};
@@ -16,5 +17,3 @@ class Room {
 
     }
 }
-
-export default Room;
