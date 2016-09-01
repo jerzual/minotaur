@@ -2,11 +2,11 @@ module.exports = {
     input: 'src/**/*',
     output: 'www/',
     scripts: {
-        input: 'src/js/*',
+        input: 'src/scripts/*',
         output: 'www/js/'
     },
     styles: {
-        input: 'src/less/**/*.less',
+        input: 'src/styles/index.scss',
         output: 'www/css/'
     },
     svgs: {

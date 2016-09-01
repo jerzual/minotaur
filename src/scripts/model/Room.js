@@ -2,10 +2,11 @@
 
 export default class Room {
     constructor(opts) {
-        this.start = {x: 0, y: 0};
-        this.end = {x: 0, y: 0};
-        this.doors = {top: false, left: false, bottom: false, right: false};
-        this.doorLocation = {}
+        this.left = 0;
+        this.top = 0;
+        this.width = 0;
+        this.height = 0;
+        this.doors = [];
     }
 
     isThisTileIn(x, y) {
