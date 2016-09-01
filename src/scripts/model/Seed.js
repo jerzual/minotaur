@@ -2,7 +2,7 @@
 var rng = require('rng-js');
 
 /**
- * Generates a Math.random() human-readablebased Seed.
+ * Generates a Math.random() human-readable based Seed.
  * @param length number of characters
  */
 module.exports = function seed(length){

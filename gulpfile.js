@@ -43,7 +43,7 @@ gulp.task('browserify', function () {
 gulp.task('build:app', function () {
     // set up the browserify instance on a task basis
     var b = browserify({
-        entries: './src/scripts/main.js',
+        entries: './src/main.js',
         debug: !production,
         // defining transforms here will avoid crashing your stream
         transform: [browserifyShim, babelify({presets: ["es2015"]})]
