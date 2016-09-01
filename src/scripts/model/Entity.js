@@ -1,7 +1,6 @@
 /**
  * a superclass of all drawable things.
  */
-
 export default class Entity{
 
     constructor(args){
@@ -9,5 +8,15 @@ export default class Entity{
         this.sprites = [];
         this.bodies = [];
     }
+    move(direction){
+      if(direction.x){
 
+      }
+      if(direction.y){
+
+      }
+      if(direction.z){
+        //level change
+      }
+    }
 }
