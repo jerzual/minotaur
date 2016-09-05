@@ -5,4 +5,13 @@ export default class ItemBuilder{
     this.item = new Item();
     
   }
+  fromTreasurePool(){
+
+  }
+  randomConsumable(rng){
+    
+  }
+  build(){
+    return item;
+  }
 }
