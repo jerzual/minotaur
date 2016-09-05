@@ -1,15 +1,16 @@
-import {MIN_DUNGEON_WIDTH} from '../Constants';
+import {MIN_DUNGEON_SIZE} from '../Constants';
+import Tile from './Tile';
+
 /**
  * A Level contains a set of rooms, the tiles array, logic for entering and leaving.
  */
 class Level {
-    tiles = [];
-    rooms = [];
     constructor(opts) {
         //bi-dimensional array of Tiles.
         this.tiles = [];
-        this.width = opts.width ? opts.width : MIN_DUNGEON_WIDTH;
-        this.width = opts.width ? opts.width : MIN_DUNGEON_WIDTH;
+        this.rooms = [];
+        this.width = opts.width ? opts.width : MIN_DUNGEON_SIZE;
+        this.height = opts.height ? opts.height : MIN_DUNGEON_SIZE;
         this.entry = {};
         this.exit = {};
     }
@@ -40,7 +41,7 @@ class Level {
     }
 
     getTileAt(x, y) {
-        if (x >= 0 && x < DUNGEON_WIDTH && y >= 0 && y < DUNGEON_HEIGHT) {
+        if (x >= 0 && x < this.width && y >= 0 && y < this.height) {
             return this.tiles[x][y];
         } else {
             return undefined;

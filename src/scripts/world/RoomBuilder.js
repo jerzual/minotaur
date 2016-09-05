@@ -1,4 +1,8 @@
 
+import Room from '../model/Room';
+
+import {ROOM_MIN_SIZE,ROOM_MAX_SIZE} from '../Constants';
+
 class RoomBuilder {
     constructor(options) {
         var rng = options.rng;

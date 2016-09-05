@@ -3,15 +3,16 @@ import {Scene} from 'three';
 import RNG from 'rng-js';
 import Seed from './model/Seed';
 import DungeonBuilder from './world/DungeonBuilder';
+import LevelBuilder from './world/LevelBuilder';
 import Renderer from './world/Renderer';
 
 //principal namespace
 const SDG = {
     needsUpdate: true
 }
-export class Minotaur {
+class Minotaur {
     constructor(canvas) {
-        this.scene = new Scene();
+        //this.scene = new Scene();
         this.rng = new RNG('' + Date.now());
         //this.player = new Player();
         this.canvas = canvas;
@@ -24,10 +25,10 @@ export class Minotaur {
         this.seed = new Seed({
             string: this.input.value
         });
-        this.dungeon = new DungeonBuilder(this.seed).build();
+        this.dungeon = new LevelBuilder(this.seed).build();
         this.renderer = new Renderer({
             dungeon: this.dungeon,
-            canvas: document.getElementById('canvasView')
+            canvas: document.getElementById('minotaur')
         });
         this.needsUpdate = true;
 
@@ -59,11 +60,11 @@ export class Minotaur {
 
     //animation ?
     animate() {
-        if (this.needsUpdate) {
+        if(this.renderer){
             this.renderer.clearCanvas();
             this.renderer.draw();
         }
-        requestAnimationFrame(this.animate);
+        requestAnimationFrame(()=>{this.animate();});
     }
 
 
@@ -74,19 +75,15 @@ export class Minotaur {
         //prefill seed form
         this.input.value = new Seed().string;
 
-        document.getElementById('reload').addEventListener('click', this.reload);
-        document.getElementById('seed-input').addEventListener('submit', this.submit);
-
+        document.getElementById('seed-input').addEventListener('submit', (e)=>{ this.submit(e) });
+        document.getElementById('reload').addEventListener('click', (e)=>{ this.reload(e)});
         //convert clicks on canvas to position indexes.
-        document.getElementById('canvasView').addEventListener('click', this.click);
+        document.getElementById('canvasView').addEventListener('click',(e)=>{ this.click(e) });
         //window.addEventListener('resize', this.renderer.resizeHandler );
-        document.getElementById('generate').addEventListener('click', this.generate);
+        document.getElementById('generate').addEventListener('click',(e) =>{ this.generate(e) });
 
         this.animate();
     }
 }
 
-document.addEventListener('DOMContentLoaded', (e) => {
-    window.minotaur = new Minotaur(document.getElementById('canvas'));
-    window.minotaur.initialize(e);
-});
+export default Minotaur;

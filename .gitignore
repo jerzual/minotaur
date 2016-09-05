@@ -51,4 +51,4 @@ bower_components
 node_modules
 
 #dist directory
-public/
+www/

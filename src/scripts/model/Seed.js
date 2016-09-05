@@ -1,6 +1,6 @@
 'use strict';
 import RNG from 'rng-js';
-export const SEED_LENGTH = 5;
+export const SEED_LENGTH = 8;
 export const SEED_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
 /**
  * Encapsulate a seed string and a RandomNumberGenerator
@@ -8,7 +8,7 @@ export const SEED_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
 export class Seed {
 
     constructor(seed) {
-        this.string = seed ? seed.string : this.randomString();
+        this.string = seed ? seed.string : Seed.randomString();
         this.rng = new RNG(this.string);
     }
 
