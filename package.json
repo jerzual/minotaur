@@ -4,7 +4,7 @@
   "description": "an attempt at making a browser FPS with THREE.js",
   "main": "src/scripts/minotaur.js",
   "scripts": {
-    "browserify":"browserify src/main.js -o www/main.js -t [ babelify --presets [ es2015 ] ]",
+    "browserify": "browserify src/main.js -o www/main.js -t [ babelify --presets [ es2015 ] ]",
     "serve": "http-server -c 1 -a localhost",
     "dev": "npm-run-all --parallel watchify serve",
     "build": "cross-env NODE_ENV=production browserify -e src/scripts/minotaur.js | uglifyjs -c warnings=false -m > www/js/main.js",
@@ -75,6 +75,7 @@
   },
   "dependencies": {
     "dat-gui": "^0.5.0",
+    "easystarjs": "^0.3.0",
     "hammerjs": "^2.0.8",
     "lodash": "^4.1.0",
     "rng-js": "^1.0.1",

@@ -1,5 +1,7 @@
-import Level from '../models/Level';
+import {DUNGEON_WIDTH,DUNGEON_HEIGHT,ROOM_ATTEMPTS,ROOM_NUMBER, GAP_BETWEEN_ROOMS} from '../Constants';
+import Level from '../model/Level';
 import RoomBuilder from './RoomBuilder';
+import EasyStar from 'easystarjs';
 
 class LevelBuilder {
     constructor(seed) {
@@ -8,7 +10,7 @@ class LevelBuilder {
     }
 
     build() {
-        let dungeon = new Level();
+        let dungeon = new Level({width:DUNGEON_WIDTH,height:DUNGEON_HEIGHT});
         dungeon.initialize(DUNGEON_WIDTH, DUNGEON_HEIGHT);
         //this.initEmptyTiles(dungeon);
         this.createRooms(dungeon);

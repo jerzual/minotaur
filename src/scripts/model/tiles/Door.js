@@ -20,3 +20,5 @@ class Door extends Tile {
         //TODO move to another room
     }
 }
+
+export default Door;

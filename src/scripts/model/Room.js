@@ -1,3 +1,4 @@
+import Door from './tiles/Door';
 
 const GAP_BETWEEN_ROOMS=2;
 

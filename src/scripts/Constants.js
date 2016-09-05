@@ -2,6 +2,7 @@ export const SEED_LENGTH = 8;
 //dungeon size
 export const DUNGEON_WIDTH = 36;
 export const DUNGEON_HEIGHT = 24;
+export const MIN_DUNGEON_SIZE = 32;
 //room
 export const ROOM_MIN_SIZE = 5;
 export const ROOM_MAX_SIZE = 8;
