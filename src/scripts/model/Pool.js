@@ -1,5 +1,5 @@
 /**
- * a pool is a random array of items yor entities.
+ * a pool is a random array of items or entities.
  * it is intialized with an array of object you can pick from
 */
 export default class Pool{

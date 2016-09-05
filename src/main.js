@@ -1,6 +1,6 @@
-var THREE = require('three');
-var datGUI = require('dat-gui');
-var Minotaur = require('./minotaur');
+import THREE from 'three';
+import datGUI from 'dat-gui';
+import Minotaur from './scripts/Minotaur';
 
 var canvas = document.getElementById('minotaur');
 
