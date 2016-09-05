@@ -34,7 +34,7 @@ module.exports = function(config)
 
         browserify: {
             debug: true,
-            entry: './src/scripts/minotaur.js',
+            entry: './src/main.js',
             transform: ['browserify-shim', 'babelify','vueify'],
             extensions: ['.js','.vue']
         },
