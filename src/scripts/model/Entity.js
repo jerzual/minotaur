@@ -4,6 +4,7 @@
 export default class Entity{
 
     constructor(args){
+        this.components = [];
         this.inventory = [];
         this.sprites = [];
         this.bodies = [];

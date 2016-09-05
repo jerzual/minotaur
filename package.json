@@ -4,12 +4,12 @@
   "description": "an attempt at making a browser FPS with THREE.js",
   "main": "src/scripts/minotaur.js",
   "scripts": {
-    "watchify": "watchify -vd -p browserify-hmr -e src/scripts/minotaur.js -o public/js/main.js",
+    "browserify":"browserify src/main.js -o www/main.js -t [ babelify --presets [ es2015 ] ]",
     "serve": "http-server -c 1 -a localhost",
     "dev": "npm-run-all --parallel watchify serve",
-    "build": "cross-env NODE_ENV=production browserify -e src/scripts/minotaur.js | uglifyjs -c warnings=false -m > public/js/main.js",
-    "html": "jade -o public/ src/index.jade",
-    "css": "node-sass -o public/styles/ ./src/styles/index.scss",
+    "build": "cross-env NODE_ENV=production browserify -e src/scripts/minotaur.js | uglifyjs -c warnings=false -m > www/js/main.js",
+    "html": "jade -o www/ src/index.jade",
+    "css": "node-sass -o www/styles/ ./src/styles/index.scss",
     "lint": "eslint --ext .js,.vue src test/unit",
     "test": "karma start karma.conf.js"
   },
@@ -64,7 +64,7 @@
   },
   "browserify-shim": {
     "three": "global:THREE",
-    "exoskeleton": "backbone"
+    "rng": "RNG"
   },
   "browserify": {
     "transform": [

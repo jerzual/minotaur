@@ -13,8 +13,9 @@ var connect = require('gulp-connect');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 var jade = require('gulp-jade');
+var size = require('gulp-size');
 var del = require('del');
-const vueify = require('vueify');
+var vueify = require('vueify');
 
 var paths = {source: './src', destination: './www'};
 
@@ -23,84 +24,45 @@ var production = (process.env.NODE_ENV === 'production');
 gulp.task('browserify', function () {
     // set up the browserify instance on a task basis
     var b = browserify({
-        entries: './src/scripts/main.js',
-        debug: !production,
+        entries: './src/main.js',
+        debug: true
         // defining transforms here will avoid crashing your stream
-        transform: [browserifyShim, vueify, babelify({presets: ["es2015"]})]
-    });
+    })
+        .transform(browserifyShim)
+        .transform(vueify)
+        .transform(babelify,{presets: ["es2015"]});
 
     return b.bundle()
-        .pipe(source('main.js'))
+        .pipe(source('minotaur.js'))
         .pipe(buffer())
         .pipe(sourcemaps.init({loadMaps: true}))
             // Add transformation tasks to the pipeline here.
-            //.pipe(uglify())
+            .pipe(uglify())
             .on('error', gutil.log)
         .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest(paths.destination+'/js/'));
+        .pipe(size())
+        .pipe(gulp.dest(paths.destination+'/scripts/'))
+        .pipe(connect.reload());
 });
 
-gulp.task('build:app', function () {
-    // set up the browserify instance on a task basis
-    var b = browserify({
-        entries: './src/main.js',
-        debug: !production,
-        // defining transforms here will avoid crashing your stream
-        transform: [browserifyShim, babelify({presets: ["es2015"]})]
-    });
-/*
-    //for each dependencies manage by npm.
-    packageJSON.dependencies.forEach((lib)=>{
-        //treat them as external by browserify.
-        b.external(lib);
-    });*/
-    return b.bundle()
-        .pipe(source('main.js'))
-        .pipe(buffer())
-        .pipe(sourcemaps.init({loadMaps: true}))
-        // Add transformation tasks to the pipeline here.
-        //.pipe(uglify())
-        .on('error', gutil.log)
-        .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest(paths.destination+'/js/'));
-});
-gulp.task('build:vendor', function () {
-    // set up the browserify instance on a task basis
-    var b = browserify({
-        entries: './src/scripts/vendor.js',
-        debug: !production,
-        // defining transforms here will avoid crashing your stream
-        transform: [browserifyShim, babelify({presets: ["es2015"]})]
-    });
-
-    return b.bundle()
-        .pipe(source('vendor.js'))
-        .pipe(buffer())
-        .pipe(sourcemaps.init({loadMaps: true}))
-        // Add transformation tasks to the pipeline here.
-        //.pipe(uglify())
-        .on('error', gutil.log)
-        .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest(paths.destination+'/js/'));
-});
 
 gulp.task('sass', function () {
     return gulp.src(paths.source + '/styles/*.scss')
         .pipe(sourcemaps.init())
         .pipe(sass())
         .pipe(sourcemaps.write())
+        .pipe(size())
         .pipe(gulp.dest(paths.destination + '/styles/'))
         .pipe(connect.reload());
 });
 gulp.task('uglify', function () {
-    //copy sources to www/
-    gulp.src(paths.source + '/scripts/**/*.js')
-        .pipe(gulp.dest(paths.destination + '/scripts'));
-    //uglify them
-    return gulp.src(paths.destination + '/scripts/**/*.js')
+    //uglify sources
+    return gulp.src(paths.source + '/scripts/**/*.js')
         .pipe(sourcemaps.init())
+        .pipe(size())
         .pipe(uglify())
         .pipe(rename({'extname': '.min.js'}))
+        .pipe(size())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(paths.destination +'/scripts'))
         .pipe(connect.reload());
@@ -110,7 +72,9 @@ gulp.task('html', function () {
         .pipe(jade({
             pretty: true
         }))
+        .pipe(size())
         .pipe(gulp.dest(paths.destination+'/'))
+        .pipe(connect.reload())
 });
 
 

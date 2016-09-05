@@ -6,24 +6,32 @@ html
     body
         canvas#minotaur
         div#gui
-            #map
-                - var n = 0
-                while n < 8
-                    - var tileId = 'tile-' + n++
-                    div(id=tileId).tile .tile-empty
-            #controls
+        .view#main-menu
+            form#seed-input
+                label(for='seed') Seed
+                input(id='seed',type='text',placeholder='ABCD1234',pattern='([A-Z]|[a-z]|[0-9]){8}')
+                button#reload(type='button',title="get a random seed") &#x21bb;&nbsp;New Seed&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                button#generate(type='submit') &#x1f680; Generate
+        .view#map
+            canvas#canvasView
+        .view#controls
                 .nipple-circle
+
             #actions
-                button(id='A')
-                button(id='B')
-            #inventory
+                button(id='rotateLeft') &lt;
+                button(id='forward') &lt;
+                button(name='rotateRight') &gt;
+            #moves
+                button(id='strafeLeft') &lt;
+                button(id='backward') &lt;
+                button(name='strafeRightt') -90
+
+        .view#inventory
                 #equipedItems
                     #head
                     #body
                     #left
                     #right
                 #bag
-
-        section#game
-        section#menu
-        script(src='js/main.js')
+        .view#options
+        script(src='./scripts/minotaur.js')
