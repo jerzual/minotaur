@@ -4,6 +4,7 @@
  *
  */
 import Seed from '../../src/scripts/model/Seed.js';
+import {expect} from 'mocha';
 
 describe('Seed Object', function () {
 
@@ -18,6 +19,6 @@ describe('Seed Object', function () {
     });
 });
 
-describe('Seed generate function',()=>{
+describe('Seed randomString function',()=>{
 
 });
