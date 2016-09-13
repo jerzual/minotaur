@@ -6,11 +6,11 @@ import Tile from './Tile';
  */
 class Level {
     constructor(opts) {
+        this.seed = opts.seedString;
+        this.index = opts.index;
         //bi-dimensional array of Tiles.
         this.tiles = [];
         this.rooms = [];
-        this.width = opts.width ? opts.width : MIN_DUNGEON_SIZE;
-        this.height = opts.height ? opts.height : MIN_DUNGEON_SIZE;
         this.entry = {};
         this.exit = {};
     }

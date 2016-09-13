@@ -2,7 +2,7 @@ import {DUNGEON_HEIGHT,DUNGEON_WIDTH,GRID_WIDTH,TILE_SIZE} from '../Constants';
 //Canvas Renderer
 class Renderer {
     constructor(options) {
-        this.dungeon = options.dungeon;
+        this.level = options.dungeon;
         this.colors = {
             //http://paletton.com/#uid=7000u0kllllaFw0g0qFqFg0w0aF
             red: 'rgb(170,57,57)',
@@ -28,8 +28,8 @@ class Renderer {
         this.resizeHandler();
     }
     resizeHandler() {
-        this.canvas.width = DUNGEON_WIDTH * this.getTileSize();
-        this.canvas.height = DUNGEON_HEIGHT * this.getTileSize();
+        this.canvas.width = this.level.width * this.getTileSize();
+        this.canvas.height = this.level.height * this.getTileSize();
     }
     getTileSize(){
         return TILE_SIZE + (this.gridEnabled ? GRID_WIDTH : 0);
@@ -41,8 +41,8 @@ class Renderer {
         var context = this.context;
         //clean frame
         context.clearRect(0, 0, window.innerWidth, window.innerHeight);
-        //draw dungeon
-        this.dungeon.tiles.forEach(
+        //draw dungeon level
+        this.level.tiles.forEach(
             (line) => {
                 line.forEach(
                     (tile) => {
@@ -102,21 +102,21 @@ class Renderer {
 
         context.beginPath();
         context.strokeStyle = this.colors.grid;
-        for (let i = 1; i <= DUNGEON_WIDTH; i++) {
+        for (let i = 1; i <= this.level.width; i++) {
             //draw vertical lines at x positions
             let realX = i * this.getTileSize();
             //console.log(`realX : ${realX}`);
             context.moveTo( realX, 0);
-            context.lineTo( realX, DUNGEON_HEIGHT * this.getTileSize());
+            context.lineTo( realX, this.level.height * this.getTileSize());
 
-        };
-        for (let j = 1; j <= DUNGEON_HEIGHT; j++) {
+        }
+        for (let j = 1; j <= this.level.height; j++) {
             //draw horizontal lines.
             let realY = j * this.getTileSize();
             //console.log(`realY : ${realY}`);
             context.moveTo(0, realY);
-            context.lineTo( (DUNGEON_WIDTH) * this.getTileSize(), realY);
-        };
+            context.lineTo( (this.level.width) * this.getTileSize(), realY);
+        }
         context.stroke();
     }
     drawChest(chest) {

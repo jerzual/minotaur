@@ -3,7 +3,6 @@ import {Scene} from 'three';
 import RNG from 'rng-js';
 import Seed from './model/Seed';
 import DungeonBuilder from './world/DungeonBuilder';
-import LevelBuilder from './world/LevelBuilder';
 import Renderer from './world/Renderer';
 
 //principal namespace
@@ -17,6 +16,7 @@ class Minotaur {
         //this.player = new Player();
         this.canvas = canvas;
         this.initialize();
+        this.renderers = [];
     }
 
     //launch dungeon generation
@@ -25,10 +25,19 @@ class Minotaur {
         this.seed = new Seed({
             string: this.input.value
         });
-        this.dungeon = new LevelBuilder(this.seed).build();
-        this.renderer = new Renderer({
-            dungeon: this.dungeon,
-            canvas: document.getElementById('minotaur')
+        this.dungeon = new DungeonBuilder(this.seed).build();
+        this.renderers = this.dungeon.levels.map((level)=>{
+            let canvas = document.createElement('canvas');
+            canvas.id = `dungeon-${this.seed.string}-level-${level.index}`;
+            canvas.width = level.width;
+            canvas.height = level.height;
+            document.body.appendChild(canvas);
+
+            let renderer = new Renderer({
+                dungeon: level,
+                canvas: canvas
+            });
+            return renderer;
         });
         this.needsUpdate = true;
 
@@ -60,9 +69,14 @@ class Minotaur {
 
     //animation ?
     animate() {
-        if(this.renderer){
-            this.renderer.clearCanvas();
-            this.renderer.draw();
+        if(this.renderers){
+        this.renderers.forEach(
+            (renderer)=>
+            {
+                renderer.clearCanvas();
+                renderer.draw();
+            }
+        );
         }
         requestAnimationFrame(()=>{this.animate();});
     }

@@ -9,7 +9,6 @@ body
   height:100%;
   background-color:$bgColor;
   color:$mainColor;
-  overflow:hidden;
 }
 .view{
   position:absolute;
@@ -96,7 +95,7 @@ html, body {
 body {
   background-color: #ffffff;
   margin: 0;
-  overflow: hidden;
+ // overflow: hidden;
   font-family: arial;
 }
 #blocker {
