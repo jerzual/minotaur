@@ -1,7 +1,8 @@
 'use strict';
-import RNG from 'rng-js';
 export const SEED_LENGTH = 8;
 export const SEED_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+
+require('exports-loader?RNG!rng-js');
 /**
  * Encapsulate a seed string and a RandomNumberGenerator
  */
