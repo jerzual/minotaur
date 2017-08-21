@@ -19,6 +19,12 @@ class Door extends Tile {
     collide(player) {
         //TODO move to another room
     }
+    open() {
+        
+    }
+    close() {
+
+    }
 }
 
 export default Door;
