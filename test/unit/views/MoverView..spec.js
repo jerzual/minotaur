@@ -15,3 +15,6 @@ import Vue from 'vue';
  *  //TODO the template should have a cross and two rotating arrowd
  *
  */
+describe('MoverView', () => {
+    test('shows the game state', () => { });
+});

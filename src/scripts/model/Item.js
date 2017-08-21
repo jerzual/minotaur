@@ -1,4 +1,4 @@
-import Entity from './Enntity';
+import Entity from './Entity';
 
 export default class Item extends Entity{
 

@@ -9,6 +9,7 @@ export default class Entity{
         this.sprites = [];
         this.bodies = [];
     }
+
     move(direction){
       if(direction.x){
 
