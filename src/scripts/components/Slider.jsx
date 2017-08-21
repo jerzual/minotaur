@@ -3,6 +3,6 @@ import style from './Buton.scss';
 
 export default class Button {
     render({ action, onClicked }) {
-        return (<button type="button"></button>)
+        return (<input type="text"></input>)
     }
 }

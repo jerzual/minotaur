@@ -1,4 +1,6 @@
 /**
  * Potions have randomized effect.
  */
-export default class extends Item{ }
+export default class extends Item {
+
+ }

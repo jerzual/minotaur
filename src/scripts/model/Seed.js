@@ -21,7 +21,6 @@ export class Seed {
         for (let i = 0; i < SEED_LENGTH; i++) {
             randomSeed += SEED_CHARS.charAt(Math.floor(Math.random() * SEED_CHARS.length));
         }
-
         return randomSeed;
     }
 

@@ -24,8 +24,7 @@ module.exports = {
         extensions: ['.jsx', '.js', '.json', '.less'],
         alias: {
             "react": "preact-compat",
-            "react-dom": "preact-compat",
-            "rng-js": "rng-js/rng.js"
+            "react-dom": "preact-compat"
         }
     },
 
