@@ -35,7 +35,7 @@ export class RC4 {
  * @param {string} string
  * @returns {Array} An array of bytes
  */
-  getStringBytes(string) {
+  static getStringBytes(string) {
     var output = [];
     for (var i = 0; i < string.length; i++) {
       var c = string.charCodeAt(i);
