@@ -1,6 +1,5 @@
-import {SEED_LENGTH, DUNGEON_WIDTH, DUNGEON_HEIGHT} from './Constants';
-import {Scene} from 'three';
-import RNG from 'rng-js';
+import { SEED_LENGTH, DUNGEON_WIDTH, DUNGEON_HEIGHT } from './Constants';
+import { Scene } from 'three';
 import Seed from './model/Seed';
 import DungeonBuilder from './world/DungeonBuilder';
 import Renderer from './world/Renderer';
@@ -12,7 +11,6 @@ const SDG = {
 class Minotaur {
     constructor(canvas) {
         //this.scene = new Scene();
-        this.rng = new RNG('' + Date.now());
         //this.player = new Player();
         this.canvas = canvas;
         this.initialize();

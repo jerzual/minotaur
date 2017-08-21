@@ -3,8 +3,10 @@ import LevelBuilder from './LevelBuilder';
 import Dungeon from '../model/Dungeon';
 import Seed from '../model/Seed';
 import Player from '../model/Player';
+
 const MIN_DUNGEON_WIDTH =32;
 const MIN_DUNGEON_HEIGHT=24;
+
 class DungeonBuilder {
     constructor({rng}) {
         this.dungeon = new Dungeon();
