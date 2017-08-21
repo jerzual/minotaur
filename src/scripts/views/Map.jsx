@@ -1,11 +1,6 @@
-<style>
-</style>
-<template>
-</template>
-<script>
-import Vue from 'vue';
+import { h, Component } from 'preact';
 
-export default class MapView extends Vue{
+export default class MapView extends Component {
     data(){
         return {
             tiles:[],
@@ -17,9 +12,8 @@ export default class MapView extends Vue{
             }
         }
     }
-    template(){
-
+    render(){
+        return <canvas></canvas>;
     }
 }
 
-</script>
