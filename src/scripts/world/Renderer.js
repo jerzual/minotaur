@@ -21,7 +21,7 @@ class Renderer {
             player: 'rgb(255,255,255)',
             tile: 'rgb(128,128,128)',
             empty: 'rgb(0,0,0)'
-        }
+        };
         this.canvas = options.canvas;
         this.context = this.canvas.getContext('2d');
         this.gridEnabled = false;
