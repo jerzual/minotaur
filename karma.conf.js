@@ -4,7 +4,7 @@ module.exports = function(config)
 
         basePath: '',
 
-        frameworks: ['browserify', 'mocha','chai'],
+        frameworks: ['webpack', 'mocha','chai'],
 
         files: [
             'src/scripts/minotaur.js',
