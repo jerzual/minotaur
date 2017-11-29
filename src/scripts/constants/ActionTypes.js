@@ -21,4 +21,4 @@ const LOOT_ENTITY = 'LOOT_ENTITY';
 
 // item action
 const PICKUP_ITEM = 'PICKUP_ITEM';
-const DROP_ITEM = 'PICKUP_ITEM';
+const DROP_ITEM = 'DROP_ITEM';
