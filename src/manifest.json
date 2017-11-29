@@ -1,6 +1,6 @@
 {
-  "name": "Preact PWA",
-  "short_name": "Preact PWA",
+  "name": "Minotaur",
+  "short_name": "minotaur",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
