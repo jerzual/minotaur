@@ -3,3 +3,15 @@ const LEVEL_GENERATED = 'LEVEL_GENERATED';
 const GENERATE_DUNGEON = 'GENERATE_DUNGEON';
 const DUNGEON_GENERATED = 'DUNGEON_GENERATED';
 
+export function generateLevel(dimensions) {
+    return {
+        type : 'GENERATE_LEVEL',
+        payload: dimensions
+    }
+}
+
+export function generateDungeon() {
+    return {
+
+    }
+}

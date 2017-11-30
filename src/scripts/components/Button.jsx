@@ -1,5 +1,5 @@
 import { h, Component } from 'preact';
-import style from './Buton.scss';
+import style from './Button.scss';
 
 export default class Button {
     render({ action, onClicked }) {

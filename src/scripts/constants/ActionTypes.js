@@ -1,24 +1,24 @@
 // global game actions
-const START_GAME = 'START_GAME';
-const QUIT_GAME = 'QUIT_GAME';
+export const START_GAME = 'START_GAME';
+export const QUIT_GAME = 'QUIT_GAME';
 
 // level actions
-const GENERATE_LEVEL = 'GENERATE_LEVEL';
-const LEVEL_GENERATED = 'LEVEL_GENERATED';
-const GENERATE_DUNGEON = 'GENERATE_DUNGEON';
-const DUNGEON_GENERATED = 'DUNGEON_GENERATED';
+export const GENERATE_LEVEL = 'GENERATE_LEVEL';
+export const LEVEL_GENERATED = 'LEVEL_GENERATED';
+export const GENERATE_DUNGEON = 'GENERATE_DUNGEON';
+export const DUNGEON_GENERATED = 'DUNGEON_GENERATED';
 
 // player movement
-const MOVE_FORWARD = 'MOVE_FORWARD';
-const ROTATE_RIGHT = 'ROTATE_RIGHT';
-const MOVE_BACKWARD = 'MOVE_BACKWARD';
-const ROTATE_LEFT = 'ROTATE_LEFT';
+export const MOVE_FORWARD = 'MOVE_FORWARD';
+export const ROTATE_RIGHT = 'ROTATE_RIGHT';
+export const MOVE_BACKWARD = 'MOVE_BACKWARD';
+export const ROTATE_LEFT = 'ROTATE_LEFT';
 
 // entity interaction
-const INTERACT_WITH = 'INTERACT_WITH';
-const ATTACK_ENTITY = 'ATTACK_ENTITY';
-const LOOT_ENTITY = 'LOOT_ENTITY';
+export const INTERACT_WITH = 'INTERACT_WITH';
+export const ATTACK_ENTITY = 'ATTACK_ENTITY';
+export const LOOT_ENTITY = 'LOOT_ENTITY';
 
 // item action
-const PICKUP_ITEM = 'PICKUP_ITEM';
-const DROP_ITEM = 'DROP_ITEM';
+export const PICKUP_ITEM = 'PICKUP_ITEM';
+export const DROP_ITEM = 'DROP_ITEM';
