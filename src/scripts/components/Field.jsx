@@ -1,4 +1,5 @@
 import { h, Component } from "preact";
+import style from './Field.scss';
 
 export default class Field {
   render({ label, children }) {
