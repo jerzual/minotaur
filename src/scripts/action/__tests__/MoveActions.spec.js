@@ -1,16 +1,23 @@
 import * as actions from '../../action/MoveActions'
 import * as types from '../../constants/ActionTypes'
 
-describe('actions', () => {
+describe('action/MoveActions', () => {
+
   it('should create an action to move forward', () => {
-    const text = 'Finish docs'
     const expectedAction = {
-      type: types.ADD_TODO,
-      text
+      type: types.MOVE_FORWARD
     }
-    expect(actions.addTodo(text)).toEqual(expectedAction)
+    expect(actions.moveForward()).toEqual(expectedAction)
   })
+
   it('should create an action to move backward', () => {
 
   });
-})
+  it('should create an action to rotate left', () => {
+
+  });
+  it('should create an action to rotate right', () => {
+
+  });
+
+});

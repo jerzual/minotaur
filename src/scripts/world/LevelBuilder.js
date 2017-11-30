@@ -61,6 +61,7 @@ class LevelBuilder {
         }
 
     }
+
     canBePlaced(room) {
         console.log('checking if room can be placed in dungeon');
         let result = true;
