@@ -7,7 +7,7 @@ An attempt at making an old school dungeon crawler/FPS. And also, use gulp, brow
 ## Features
 
  * A procedurally generated labyrinth, composed of rooms and corridors.
- * Rooms, are combat arenas, corridors are rest/peace ful spaces.
+ * Rooms, are combat arenas, corridors are rest/peaceful spaces.
  * The goal is to kill the minotaur.
  * You only have mana spells and melee weapons.
  * It plays like a turn based dungeon crawler, but with (browser) 3D.
@@ -15,7 +15,7 @@ An attempt at making an old school dungeon crawler/FPS. And also, use gulp, brow
 ## Technical stuff
 
 Like a lot of my projects the main goal here is to experiment with technology and programming paradigms.
-here we will be playing with :
+here i was be playing with :
 
 * browser 3D thanks to webGL and ThreeJS
 * MVC for the game UI, whatever works for the 3D scene.
