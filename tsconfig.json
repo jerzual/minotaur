@@ -11,5 +11,5 @@
   },
   "include": ["src", "types"],
   "exclude": ["node_modules", "dist/*", "old"],
-  "files": ["eslintrc.js", "jest.config.js"]
+  "files": ["jest.config.js"]
 }

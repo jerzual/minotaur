@@ -1,6 +1,9 @@
 const path = require('path');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const OfflinePlugin = require('offline-plugin');
+
 
 module.exports = {
   entry: './src/index.ts',
@@ -26,7 +29,7 @@ module.exports = {
   },
   plugins: [
     new ForkTsCheckerWebpackPlugin({
-      eslint: { files: ['src/index.ts'], enabled: true },
+      issue: { files: ['src/index.ts'], enabled: true },
     }),
     new HtmlWebpackPlugin({
         template: './src/index.pug',

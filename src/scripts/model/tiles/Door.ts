@@ -1,10 +1,12 @@
+import Player from '../Player';
 import Tile from '../Tile';
 
 class Door extends Tile {
 	public isWall: any;
 	public isDoor: any;
-
-    constructor(options) {
+    /** Marker for algorithm to say door is visited */
+    public isConnected: boolean;
+    constructor(options: Partial<Tile>) {
         super(options);
         this.isBlock = false;
         this.isWall = false;
@@ -18,7 +20,7 @@ class Door extends Tile {
       z: options.destination.z
     }*/
     }
-    collide(player) {
+    collide(player: Player) {
         //TODO move to another room
     }
     open() {

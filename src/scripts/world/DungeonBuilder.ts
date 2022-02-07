@@ -3,17 +3,18 @@ import LevelBuilder from './LevelBuilder';
 import Dungeon from '../model/Dungeon';
 import Seed from '../model/Seed';
 import Player from '../model/Player';
+import RNG from '../utils/rng';
 
 const MIN_DUNGEON_WIDTH =32;
 const MIN_DUNGEON_HEIGHT=24;
 
 class DungeonBuilder {
 	public dungeon: Dungeon;
-	public rng: {random: () => number};
+	public rng: RNG;
 
-    constructor({rng}) {
+    constructor(seed: Seed) {
         this.dungeon = new Dungeon();
-        this.rng = rng;
+        this.rng = seed.rng;
     }
     generatePlayer(){
         let player = new Player();
