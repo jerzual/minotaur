@@ -9,9 +9,8 @@ const SDG = {
   needsUpdate: true,
 };
 class Minotaur {
-
   public canvas: HTMLCanvasElement;
-  public renderers: any;
+  public renderers: Renderer[];
   public seed: any;
   public input: any;
   public dungeon: any;
@@ -64,8 +63,14 @@ class Minotaur {
   click(event: MouseEvent) {
     console.log(event);
     let point = {
-      x: Math.floor((event.clientX / event.target.width) * DUNGEON_WIDTH),
-      y: Math.floor((event.offsetY / event.target.height) * DUNGEON_HEIGHT),
+      x: Math.floor(
+        (event.clientX / (event.target as HTMLCanvasElement).width) *
+          DUNGEON_WIDTH,
+      ),
+      y: Math.floor(
+        (event.offsetY / (event.target as HTMLCanvasElement).height) *
+          DUNGEON_HEIGHT,
+      ),
     };
     console.log(point);
   }
@@ -93,7 +98,7 @@ class Minotaur {
       this.submit(e);
     });
     document.getElementById('reload').addEventListener('click', (e) => {
-      this.reload(e);
+      this.reload();
     });
     //convert clicks on canvas to position indexes.
     document.getElementById('canvasView').addEventListener('click', (e) => {
@@ -101,7 +106,7 @@ class Minotaur {
     });
     //window.addEventListener('resize', this.renderer.resizeHandler );
     document.getElementById('generate').addEventListener('click', (e) => {
-      this.generate(e);
+      this.generate();
     });
 
     this.animate();

@@ -8,7 +8,7 @@ export default class Player extends Entity{
 	public position: any;
 	public direction: any;
 
-    constructor(options?: any){
+    constructor(options?: Partial<Entity>){
         super(options);
         this.position = {};
         this.direction = {};

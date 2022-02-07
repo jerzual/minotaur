@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import style from './Input.scss';
 
 export default class Button {
-    render({ name, onFocused, onChanged }) {
+    render({}) {
         return (<input type="text"></input>);
     }
 }

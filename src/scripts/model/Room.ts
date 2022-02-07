@@ -12,7 +12,7 @@ class Room {
 	public isPositioned: boolean;
 	public isCompleted: boolean;
 	public tiles: Tile[];
-	public doors: Tile[];
+	public doors: Door[];
 	public entities: Entity[];
 
     constructor(options: Partial<Room>) {

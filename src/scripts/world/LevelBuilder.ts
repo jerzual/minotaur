@@ -10,7 +10,7 @@ import RNG from '../utils/rng';
 class LevelBuilder {
 	public seed: Seed;
 	public rng: any;
-	public easystar: any;
+	public easystar: EasyStar.js;
 	public level: any;
 	public difficulty: any;
 
@@ -124,13 +124,13 @@ class LevelBuilder {
 
         let roomIndex = 0;
         this.level.rooms.forEach((room: Room) => {
-            room.doors.forEach((door) => {
+            room.doors.forEach((door: Door) => {
                 //mark starting door visited
                 door.isConnected = true;
                 let freeDoors = this.level.rooms
                     .map((eachRoom: Room) => eachRoom.doors)
-                    .reduce((a, b) => a.concat(b), [])
-                    .filter((doorFiltered) => (!doorFiltered.isConnected));
+                    .reduce((a: Door[], b: Door[]) => a.concat(b), [])
+                    .filter((doorFiltered: Door) => (!doorFiltered.isConnected));
 
                 if (freeDoors.length) {
                     let nextDoor = freeDoors[0];

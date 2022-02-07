@@ -1,5 +1,4 @@
-import RNG from '../../utils/rng';
-import Seed from '../Seed';
+import Seed from './Seed';
 
 describe('model/Seed', () => {
 
