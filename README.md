@@ -1,25 +1,25 @@
 # Minotaur
 
-![Minotaur logo](https://github.com/jerzual/minotaur/raw/master/src/images/minotaur.gif "Logo Title Text 1")
+![Minotaur logo](https://github.com/jerzual/minotaur/raw/master/src/images/minotaur.gif 'Logo Title Text 1')
 
 An attempt at making an old school dungeon crawler/FPS. And also, use gulp, browserify, three.js, cordova.
 
 ## Features
 
- * A procedurally generated labyrinth, composed of rooms and corridors.
- * Rooms, are combat arenas, corridors are rest/peaceful spaces.
- * The goal is to kill the minotaur.
- * You only have mana spells and melee weapons.
- * It plays like a turn based dungeon crawler, but with (browser) 3D.
+- A procedurally generated labyrinth, composed of rooms and corridors.
+- Rooms, are combat arenas, corridors are rest/peaceful spaces.
+- The goal is to kill the minotaur.
+- You only have mana spells and melee weapons.
+- It plays like a turn based dungeon crawler, but with (browser) 3D.
 
 ## Technical stuff
 
 Like a lot of my projects the main goal here is to experiment with technology and programming paradigms.
 here i was be playing with :
 
-* browser 3D thanks to webGL and ThreeJS
-* MVC for the game UI, whatever works for the 3D scene.
-* Ecmascript 2015 cause it's the future.
+- browser 3D thanks to webGL and ThreeJS
+- MVC for the game UI, whatever works for the 3D scene.
+- Ecmascript 2015 cause it's the future.
 
 ## Graphics
 

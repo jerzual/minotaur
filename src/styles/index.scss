@@ -56,7 +56,8 @@ body {
 		border-style: solid;
 		padding: 0.25rem 1rem;
 		display: inline-block;
-		box-shadow: inset 0px 0px 2px 0px rgba($mainColor, 20%),
+		box-shadow:
+			inset 0px 0px 2px 0px rgba($mainColor, 20%),
 			0px 0px 2px 0px rgba($mainColor, 20%);
 		margin: 0;
 		display: inline-block;
@@ -117,5 +118,5 @@ body {
 	cursor: pointer;
 }
 .map-container {
-  display: grid;
+	display: grid;
 }

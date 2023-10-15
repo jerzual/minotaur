@@ -15,5 +15,5 @@ export const ROOM_ATTEMPTS = 480;
 export const TILE_SIZE = 16;
 export const GRID_WIDTH = 1;
 
-export const PI= Math.round(Math.PI * 10000);
-export const GRAVITY= 9.81;
+export const PI = Math.round(Math.PI * 10000);
+export const GRAVITY = 9.81;

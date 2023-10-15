@@ -1,6 +1,4 @@
 /**
  * Centralize level building.
  */
- export default class WorldManager{
-    
- }
+export default class WorldManager {}

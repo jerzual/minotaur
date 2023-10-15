@@ -1,4 +1,4 @@
-import {MIN_DUNGEON_SIZE} from '../Constants';
+import { MIN_DUNGEON_SIZE } from '../Constants';
 import Room from './Room';
 import Tile from './Tile';
 
@@ -15,66 +15,65 @@ class Level {
 	public width: number;
 	public height: number;
 
-    constructor(opts: Partial<Level>) {
-        this.seed = opts.seed;
-        this.index = opts.index;
-        //bi-dimensional array of Tiles.
-        this.tiles = [[]];
-        this.rooms = [];
-    }
+	constructor(opts: Partial<Level>) {
+		this.seed = opts.seed;
+		this.index = opts.index;
+		//bi-dimensional array of Tiles.
+		this.tiles = [[]];
+		this.rooms = [];
+	}
 
-    /**
-     * Fill the level with empty tiles.
-     */
-    initialize(width: number, height: number) {
-        this.width = width;
-        this.height = height;
+	/**
+	 * Fill the level with empty tiles.
+	 */
+	initialize(width: number, height: number) {
+		this.width = width;
+		this.height = height;
 
-        this.tiles = [];
-        for (let x = 0; x < this.width; x++) {
-            this.tiles[x] = [];
-            for (let y = 0; y < this.height; y++) {
-                this.tiles[x][y] = new Tile({
-                    x,
-                    y
-                });
-            }
-        }
-        var center = {
-            x: width / 2,
-            y: height / 2
-        };
-    }
+		this.tiles = [];
+		for (let x = 0; x < this.width; x++) {
+			this.tiles[x] = [];
+			for (let y = 0; y < this.height; y++) {
+				this.tiles[x][y] = new Tile({
+					x,
+					y,
+				});
+			}
+		}
+		var center = {
+			x: width / 2,
+			y: height / 2,
+		};
+	}
 
-    getTileAt(x:number, y:number) {
-        if (x >= 0 && x < this.width && y >= 0 && y < this.height) {
-            return this.tiles[x][y];
-        } else {
-            return undefined;
-        }
-    }
+	getTileAt(x: number, y: number) {
+		if (x >= 0 && x < this.width && y >= 0 && y < this.height) {
+			return this.tiles[x][y];
+		} else {
+			return undefined;
+		}
+	}
 
-    //Converts the dungeon into an astar compatible bi dimensional array, with 0 for for obstacles
-    toDiggableGrid(): boolean[][] {
-
-        let grid = [];
-        for (let y = 0; y < this.height; y++) {
-            grid[y] = [];
-            for (let x = 0; x < this.width; x++) {
-                let walkable = 0;
-                let tile = this.tiles[x][y];
-                /*
+	//Converts the dungeon into an astar compatible bi dimensional array, with 0 for for obstacles
+	toDiggableGrid(): boolean[][] {
+		let grid = [];
+		for (let y = 0; y < this.height; y++) {
+			grid[y] = [];
+			for (let x = 0; x < this.width; x++) {
+				let walkable = 0;
+				let tile = this.tiles[x][y];
+				/*
                  if(tile.isPlaced) {
                  walkable = 0;
                  }*/
-                if (!tile.isPlaced || tile.isDoor) {
-                    walkable = 1;
-                }
-                grid[y][x] = walkable;
-            }
-        }
-        //debug draw the collisionGrid on a canvas.
-        /*
+				if (!tile.isPlaced || tile.isDoor) {
+					walkable = 1;
+				}
+				grid[y][x] = walkable;
+			}
+		}
+		//debug draw the collisionGrid on a canvas.
+		/*
          let gridCanvas =  document.createElement("canvas");
          gridCanvas.width = this.width;
          gridCanvas.height = this.height;
@@ -86,12 +85,12 @@ class Level {
          }
          } document.body.appendChild(gridCanvas);
          */
-        return grid;
-    }
+		return grid;
+	}
 
-    toWalkableGrid() {
-        //TODO
-    }
+	toWalkableGrid() {
+		//TODO
+	}
 }
 
 export default Level;

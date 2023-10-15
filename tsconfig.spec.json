@@ -1,5 +1,5 @@
 {
-  "extends": "./tsconfig.json",
-  "include": ["src/**/*.spec.ts"],
-  "compilerOptions": { "composite": true }
+	"extends": "./tsconfig.json",
+	"include": ["src/**/*.spec.ts"],
+	"compilerOptions": { "composite": true }
 }

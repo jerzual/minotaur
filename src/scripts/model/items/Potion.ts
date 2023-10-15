@@ -1,4 +1,4 @@
-import Item from "../Item";
+import Item from '../Item';
 
 /**
  * Potions have randomized effect.
@@ -6,8 +6,8 @@ import Item from "../Item";
 export default class Potion extends Item {
 	public attributes: any;
 
-    constructor() {
-        super();
-        this.attributes = {};
-    }
- }
+	constructor() {
+		super();
+		this.attributes = {};
+	}
+}
