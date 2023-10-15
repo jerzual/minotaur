@@ -1,9 +1,6 @@
-import React, { Component } from "react";
-
+import React, { Component } from 'react';
 
 /**
  * Fight screen.
  */
-export default class Fight extends Component {
-
-}
+export default class Fight extends Component {}

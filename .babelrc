@@ -1,7 +1,5 @@
 {
-    "sourceMaps": true,
-    "presets": ["es2015"],
-    "plugins": [
-        ["transform-react-jsx", { "pragma": "h" }]
-    ]
+	"sourceMaps": true,
+	"presets": ["es2015"],
+	"plugins": [["transform-react-jsx", { "pragma": "h" }]]
 }

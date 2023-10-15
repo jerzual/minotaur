@@ -1,6 +1,3 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-
-export default class Messages extends Component {
-
-}
+export default class Messages extends Component {}

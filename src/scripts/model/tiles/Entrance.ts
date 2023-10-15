@@ -1,3 +1,1 @@
-export class Entrance{
-    
-}
+export class Entrance {}
