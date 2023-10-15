@@ -1,5 +1,7 @@
-import * as actions from '../../action/MoveActions'
-import * as types from '../../constants/ActionTypes'
+import { describe, it, expect } from 'vitest';
+
+import * as actions from './MoveActions'
+import * as types from '../constants/ActionTypes'
 
 describe('action/MoveActions', () => {
 
