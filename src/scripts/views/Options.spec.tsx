@@ -1,11 +1,10 @@
-import React, { FunctionComponent } from "react";
+import { describe, it, expect } from 'vitest';
+
+import React, { FunctionComponent } from 'react';
 import Options from './Options';
 
 describe('views/Options', () => {
-    beforeEach(() => {
-        
-    })
-    test('moves left', () => {
-
-    });
+	it('moves left', () => {
+		expect(true).toBe(true);
+	});
 });
