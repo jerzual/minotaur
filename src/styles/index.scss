@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 $bgColor: #dfdfdf;
 $mainColor: #666;
 
@@ -9,21 +11,26 @@ body {
 	background-color: $bgColor;
 	color: $mainColor;
 }
+
 .view {
 	position: absolute;
 	width: 100%;
 	height: 100%;
 	text-align: center;
 }
+
 #main-menu {
 	z-index: 4;
 }
+
 #map {
 	position: relative;
+
 	#canvasView {
 		margin: 4em auto 0 auto;
 	}
 }
+
 #seed-input {
 	position: fixed;
 	padding: 0;
@@ -32,20 +39,24 @@ body {
 	margin-left: calc(-1 * $inputSize / 2);
 	width: $inputSize;
 	font-weight: bold;
+
 	label {
 		text-indent: -9001px;
 		display: inline-block;
 	}
+
 	input {
 		width: 100%;
 		position: absolute;
 		right: 0;
 	}
+
 	button {
 		position: absolute;
 		right: 0;
 		top: 0;
 	}
+
 	input,
 	button {
 		font-family: 'Segoe UI', 'Helvetica', sans-serif;
@@ -70,45 +81,52 @@ body {
 	button {
 		padding: 0.25rem 0.75rem;
 		box-shadow: inset 0px 0px 2px 0px rgba($mainColor, 20%);
+
 		&#reload {
 			right: 0;
 			padding: 0.25rem 0.5rem;
 		}
+
 		transition: ease-in 0.2s all;
 		background-image: linear-gradient(to bottom, white, $bgColor);
 
 		&:focus {
 			background-image: linear-gradient(
 				to bottom,
-				darken(white, 0.1),
-				$bgColor
+				color.adjust(white, $lightness: -0.1%) $bgColor
 			);
 			box-shadow: inset 0px 0px 4px 0px rgba($mainColor, 20%);
 		}
+
 		&:active {
 			background-image: linear-gradient(to bottom, $bgColor, white);
 		}
+
 		&#generate {
 		}
 	}
 }
+
 html,
 body {
 	width: 100%;
 	height: 100%;
 }
+
 body {
 	background-color: #ffffff;
 	margin: 0;
 	// overflow: hidden;
 	font-family: arial;
 }
+
 #blocker {
 	position: absolute;
 	width: 100%;
 	height: 100%;
 	background-color: rgba(0, 0, 0, 0.5);
 }
+
 #instructions {
 	width: 100%;
 	height: 100%;
@@ -117,6 +135,7 @@ body {
 	text-align: center;
 	cursor: pointer;
 }
+
 .map-container {
 	display: grid;
 }
