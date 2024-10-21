@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Minotaur</title>
+		<script type="module" crossorigin src="/minotaur/chore/upgrade/assets/index-DdfUc03g.js"></script>
+		<link rel="stylesheet" crossorigin href="/minotaur/chore/upgrade/assets/index-DneWdO4x.css">
+	</head>
+	<body>
+		<canvas id="minotaur"></canvas>
+		<div id="gui">
+			<div class="view" id="main-menu">
+				<form action="" id="seed-input">
+					<label for="seed">Seed</label>
+					<input
+						type="text"
+						id="seed"
+						placeholder="ABCD1234"
+						pattern="([A-Z]|[a-z]|[0-9]){8}"
+					/>
+					<button id="reload" type="button" title="get a random seed">
+						&#x21bb;&nbsp;New
+						Seed&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					</button>
+					<button id="generate" type="submit">&#x1f680; Generate</button>
+				</form>
+			</div>
+
+			<div class="view" id="map"><canvas id="canvasView"></canvas></div>
+
+			<div class="view" id="controls"></div>
+			<div id="actions">
+				<button id="rotateLeft" type="button"></button>
+			</div>
+			<div id="moves">
+				<button id="strafeLeft" type="button"></button>
+				<button id="strafeRight" type="button"></button>
+			</div>
+			<div class="view" id="inventory"></div>
+			<div class="view" id="options"></div>
+		</div>
+	</body>
+</html>
