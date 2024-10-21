@@ -34,7 +34,7 @@ jobs:
           calculatedSha=$(git rev-parse --short ${{ github.sha }})
           echo "COMMIT_SHORT_SHA=$calculatedSha" >> $GITHUB_ENV
       - name: Build for staging deployment
-        run: pnpm run build --base-href=/minotaur/${{ github.head_ref }}/
+        run: pnpm run build --base=/minotaur/${{ github.head_ref }}/
       - name: Deploy to staging with gh-pages
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
