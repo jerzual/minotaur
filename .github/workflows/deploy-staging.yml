@@ -1,0 +1,67 @@
+name: Staging Deployment
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches: [main]
+
+env:
+  NODE_VERSION: 22
+
+jobs:
+  staging-deploy:
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+    runs-on: ubuntu-latest
+    environment:
+      name: staging/${{ github.head_ref }}
+      url: http://jerzual.github.io/minotaur/${{ github.head_ref }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "pnpm"
+      - name: Install dependencies
+        run: pnpm install
+      - name: Set short git commit SHA
+        id: vars
+        run: |
+          calculatedSha=$(git rev-parse --short ${{ github.sha }})
+          echo "COMMIT_SHORT_SHA=$calculatedSha" >> $GITHUB_ENV
+      - name: Build for staging deployment
+        run: pnpm run build --base=/minotaur/${{ github.head_ref }}/
+      - name: Deploy to staging with gh-pages
+        run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          pnpx gh-pages -d dist -u "github-actions-bot <support+actions@github.com>" -a true -m "Deploy ${{ env.COMMIT_SHORT_SHA }} from ${{ github.head_ref }} to GitHub pages" --dest ${{ github.head_ref }} --nojekyll true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # Clean up staging environment on PR close
+  staging-deletion:
+    if: github.event_name == 'pull_request' && github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    name: Close
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+      - name: Configure git
+        run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          git config user.name "github-actions-bot"
+          git config user.email "support+actions@github.com"
+      - name: Delete staging environment on gh-pages branch
+        run: |
+          git rm -rf ${{ github.head_ref }}
+          git commit -m "Delete ${{ github.head_ref }} from GitHub pages"
+          git push -u origin gh-pages
+

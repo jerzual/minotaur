@@ -1,0 +1,39 @@
+name: Production Deployment
+
+concurrency: production
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  NODE_VERSION: 22
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: http://jerzual.github.io/minotaur/
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "pnpm"
+      - name: Install dependencies
+        run: pnpm install
+      - name: Build for production deployment
+        run: pnpm run build --base=/minotaur/
+      - name: Deploy to production with gh-pages
+        run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          pnpx gh-pages --dist dist -u "github-actions-bot <support+actions@github.com>" -m "Deploy production to GitHub pages" --nojekyll true --dest "." --no-history true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
