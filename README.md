@@ -2,33 +2,38 @@
 
 ![Minotaur logo](https://github.com/jerzual/minotaur/raw/master/src/images/minotaur.gif 'Logo Title Text 1')
 
-An attempt at making an old school dungeon crawler/FPS. And also, use gulp, browserify, three.js, cordova.
+An attempt at making an old school dungeon crawler.
 
 ## Features
 
 - A procedurally generated labyrinth, composed of rooms and corridors.
 - Rooms, are combat arenas, corridors are rest/peaceful spaces.
-- The goal is to kill the minotaur.
-- You only have mana spells and melee weapons.
-- It plays like a turn based dungeon crawler, but with (browser) 3D.
+- The goal is to kill the final boss.
+- You only have magic spells and small melee weapons.
+- Isometric view, with a hand-drawn look.
+- Items and loot are randomly placed in the dungeon.
+- Metroid-vania style, you can't access all the dungeon at the beginning.
 
 ## Technical stuff
 
-Like a lot of my projects the main goal here is to experiment with technology and programming paradigms.
-here i was be playing with :
+Like a lot of my projects the main goal here is to experiment with technology and  paradigms.
+Here is what I was playing with this project :
 
-- browser 3D thanks to webGL and ThreeJS
-- MVC for the game UI, whatever works for the 3D scene.
-- Ecmascript 2015 cause it's the future.
+- Browser 3D thanks to WebGL and Three.js.
+- React for the game UI, whatever works for the 3D scene.
+- Local-first, no backend, no server, everything is stored in the browser.
 
 ## Graphics
 
-Still nothing for now, all in my head, I would really like to use Three.js and Voxels, i'm currently experimenting with MagicaVoxel, go check it out, it's awesome.
+I really love how the hand-drawn look from [ways.unseen](https://linktr.ee/ways.unseen) looks, and I'll try to get something similar.
+
+See these for inspiration :
+- <https://www.threads.net/@ways.unseen/post/C8R69AWN6_b>
+- <https://www.threads.net/@ways.unseen/post/DBD_KtzN6KF>
+
+Design rule : black and white, with a touch of red for health bar and decoration.
 
 ## Current Progress
 
 There's a dungeon generator in place, also first draft of UI/ Three.js renderer. Nothing fixed in stone.
 
-## Contribute
-
-If you're willing to contribute, you're welcome, i need voxel artists currently cause i suck at it. And if you're good in programming, you're welcome too.
