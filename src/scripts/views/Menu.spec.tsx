@@ -3,7 +3,6 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import React, { FunctionComponent } from 'react';
 import Menu from './Menu';
 import { render } from '@testing-library/react';
-import { MemoryRouter } from 'react-router';
 
 describe('views/Menu', () => {
 	let scratch = null;
@@ -14,9 +13,7 @@ describe('views/Menu', () => {
 
 	it('renders', () => {
 		const result = render(
-			<MemoryRouter>
-				<Menu />
-			</MemoryRouter>,
+			<Menu />
 		);
 		expect(result).toBeDefined();
 	});
