@@ -6,7 +6,7 @@ on:
     branches: [main]
 
 env:
-  NODE_VERSION: 22
+  NODE_VERSION: 24
 
 jobs:
   staging-deploy:
@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
         with:
-          version: 9
+          version: 10
       - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v4
         with:
@@ -38,7 +38,13 @@ jobs:
       - name: Deploy to staging with gh-pages
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          pnpx gh-pages -d dist -u "github-actions-bot <support+actions@github.com>" -a true -m "Deploy ${{ env.COMMIT_SHORT_SHA }} from ${{ github.head_ref }} to GitHub pages" --dest ${{ github.head_ref }} --nojekyll true
+          pnpm run deploy \
+            --dist dist \
+            --dest "${{ github.head_ref }}" \
+            --user "github-actions-bot <support+actions@github.com>" \
+            --add \
+            --message "Deploy ${{ env.COMMIT_SHORT_SHA }} from ${{ github.head_ref }} to GitHub pages" \
+            --nojekyll
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

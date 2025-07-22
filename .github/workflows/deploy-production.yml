@@ -8,7 +8,7 @@ on:
       - main
 
 env:
-  NODE_VERSION: 22
+  NODE_VERSION: 24
 
 jobs:
   deployment:
@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
         with:
-          version: 9
+          version: 10
       - name: Use Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v4
         with:
@@ -33,7 +33,13 @@ jobs:
       - name: Deploy to production with gh-pages
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          pnpx gh-pages --dist dist -u "github-actions-bot <support+actions@github.com>" -m "Deploy production to GitHub pages" --nojekyll true --dest "." --no-history true
+          pnpx gh-pages \
+            --dist dist \
+            --dest "." \
+            --user "github-actions-bot <support+actions@github.com>" \
+            --message "Deploy production to GitHub pages" \
+            --nojekyll \
+            --no-history true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
