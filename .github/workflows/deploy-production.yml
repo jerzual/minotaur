@@ -38,8 +38,7 @@ jobs:
             --dest "." \
             --user "github-actions-bot <support+actions@github.com>" \
             --message "Deploy production to GitHub pages" \
-            --nojekyll \
-            --no-history true
+            --nojekyll
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
