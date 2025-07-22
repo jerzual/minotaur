@@ -12,9 +12,7 @@ describe('views/Menu', () => {
 	});
 
 	it('renders', () => {
-		const result = render(
-			<Menu />
-		);
+		const result = render(<Menu />);
 		expect(result).toBeDefined();
 	});
 });
