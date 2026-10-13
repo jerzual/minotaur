@@ -8,7 +8,7 @@ on:
       - main
 
 env:
-  NODE_VERSION: 24
+  NODE_VERSION: 26
 
 jobs:
   deployment:
@@ -17,17 +17,12 @@ jobs:
       name: production
       url: http://jerzual.github.io/minotaur/
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
+      - uses: actions/checkout@v7
+      - name: Setup pnpm and node.js
+        uses: pnpm/setup@v3
         with:
-          version: 10
-      - name: Use Node.js ${{ env.NODE_VERSION }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: "pnpm"
-      - name: Install dependencies
-        run: pnpm install
+          runtime: node@${{ env.NODE_VERSION }}
+          cache: true
       - name: Build for production deployment
         run: pnpm run build --base=/minotaur/
       - name: Deploy to production with gh-pages

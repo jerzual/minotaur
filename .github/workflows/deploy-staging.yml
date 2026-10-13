@@ -6,7 +6,7 @@ on:
     branches: [main]
 
 env:
-  NODE_VERSION: 24
+  NODE_VERSION: 26
 
 jobs:
   staging-deploy:
@@ -17,17 +17,12 @@ jobs:
       url: http://jerzual.github.io/minotaur/${{ github.head_ref }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
+        uses: actions/checkout@v7
+      - name: Setup pnpm and node.js
+        uses: pnpm/setup@v3
         with:
-          version: 10
-      - name: Use Node.js ${{ env.NODE_VERSION }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: "pnpm"
-      - name: Install dependencies
-        run: pnpm install
+          runtime: node@${{ env.NODE_VERSION }}
+          cache: true
       - name: Set short git commit SHA
         id: vars
         run: |
@@ -57,7 +52,7 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: gh-pages
       - name: Configure git
