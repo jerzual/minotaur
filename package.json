@@ -44,5 +44,6 @@
 		"rot-js": "^2.2.1",
 		"rxjs": "^7.8.2",
 		"three": "^0.186.1"
-	}
+	},
+	"packageManager": "pnpm@12.11.2"
 }
