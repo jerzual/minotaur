@@ -8,7 +8,8 @@
 		"lint": "oxlint .",
 		"test": "vitest",
 		"deploy": "gh-pages",
-		"format": "oxfmt --write src/"
+		"format": "oxfmt --write .",
+		"format:check": "oxfmt --check ."
 	},
 	"author": "benjilegnard",
 	"license": "UNLICENSED",

@@ -69,4 +69,3 @@ jobs:
           git rm -rf -- "${HEAD_REF}"
           git commit -m "Delete ${HEAD_REF} from GitHub pages"
           git push -u origin gh-pages
-

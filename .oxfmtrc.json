@@ -1,13 +1,10 @@
 {
-  "$schema": "./node_modules/oxfmt/configuration_schema.json",
-  "singleQuote": true,
-  "trailingComma": "all",
-  "useTabs": true,
-  "tabWidth": 2,
-  "printWidth": 80,
-  "sortPackageJson": false,
-  "ignorePatterns": [
-    "node_modules/",
-    "dist/"
-  ]
+	"$schema": "./node_modules/oxfmt/configuration_schema.json",
+	"singleQuote": true,
+	"trailingComma": "all",
+	"useTabs": true,
+	"tabWidth": 2,
+	"printWidth": 80,
+	"sortPackageJson": false,
+	"ignorePatterns": ["node_modules/", "dist/"]
 }
