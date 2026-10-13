@@ -27,7 +27,7 @@ jobs:
         run: pnpm run build --base=/minotaur/
       - name: Deploy to production with gh-pages
         run: |
-          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          git remote set-url origin "https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           pnpx gh-pages \
             --dist dist \
             --dest "." \

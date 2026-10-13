@@ -26,22 +26,25 @@ jobs:
       - name: Set short git commit SHA
         id: vars
         run: |
-          calculatedSha=$(git rev-parse --short ${{ github.sha }})
-          echo "COMMIT_SHORT_SHA=$calculatedSha" >> $GITHUB_ENV
+          calculatedSha=$(git rev-parse --short "$GITHUB_SHA")
+          echo "COMMIT_SHORT_SHA=$calculatedSha" >> "$GITHUB_ENV"
       - name: Build for staging deployment
-        run: pnpm run build --base=/minotaur/${{ github.head_ref }}/
+        run: pnpm run build --base="/minotaur/${HEAD_REF}/"
+        env:
+          HEAD_REF: ${{ github.head_ref }}
       - name: Deploy to staging with gh-pages
         run: |
-          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          git remote set-url origin "https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           pnpm run deploy \
             --dist dist \
-            --dest "${{ github.head_ref }}" \
+            --dest "${HEAD_REF}" \
             --user "github-actions-bot <support+actions@github.com>" \
             --add \
-            --message "Deploy ${{ env.COMMIT_SHORT_SHA }} from ${{ github.head_ref }} to GitHub pages" \
+            --message "Deploy ${COMMIT_SHORT_SHA} from ${HEAD_REF} to GitHub pages" \
             --nojekyll
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HEAD_REF: ${{ github.head_ref }}
 
   # Clean up staging environment on PR close
   staging-deletion:
@@ -50,6 +53,7 @@ jobs:
     name: Close
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      HEAD_REF: ${{ github.head_ref }}
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -57,12 +61,12 @@ jobs:
           ref: gh-pages
       - name: Configure git
         run: |
-          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          git remote set-url origin "https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git config user.name "github-actions-bot"
           git config user.email "support+actions@github.com"
       - name: Delete staging environment on gh-pages branch
         run: |
-          git rm -rf ${{ github.head_ref }}
-          git commit -m "Delete ${{ github.head_ref }} from GitHub pages"
+          git rm -rf -- "${HEAD_REF}"
+          git commit -m "Delete ${HEAD_REF} from GitHub pages"
           git push -u origin gh-pages
 
