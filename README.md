@@ -16,7 +16,7 @@ An attempt at making an old school dungeon crawler.
 
 ## Technical stuff
 
-Like a lot of my projects the main goal here is to experiment with technology and  paradigms.
+Like a lot of my projects the main goal here is to experiment with technology and paradigms.
 Here is what I was playing with this project :
 
 - Browser 3D thanks to WebGL and Three.js.
@@ -28,6 +28,7 @@ Here is what I was playing with this project :
 I really love how the hand-drawn look from [ways.unseen](https://linktr.ee/ways.unseen) looks, and I'll try to get something similar.
 
 See these for inspiration :
+
 - <https://www.threads.net/@ways.unseen/post/C8R69AWN6_b>
 - <https://www.threads.net/@ways.unseen/post/DBD_KtzN6KF>
 
@@ -36,4 +37,3 @@ Design rule : black and white, with a touch of red for health bar and decoration
 ## Current Progress
 
 There's a dungeon generator in place, also first draft of UI/ Three.js renderer. Nothing fixed in stone.
-
